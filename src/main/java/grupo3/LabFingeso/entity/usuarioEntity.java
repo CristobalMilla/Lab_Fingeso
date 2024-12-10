@@ -16,6 +16,17 @@ public class usuarioEntity {
     private String licenciaConducir;
     private String contrasena;
 
+    public usuarioEntity(long idUsuario, int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
+        this.idUsuario = idUsuario;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.edad = edad;
+        this.correo = correo;
+        this.carnet = carnet;
+        this.licenciaConducir = licenciaConducir;
+        this.contrasena = contrasena;
+    }
+
 
     public long getIdUsuario() {
         return idUsuario;
@@ -83,8 +94,16 @@ public class usuarioEntity {
         this.contrasena = contrasena;
     }
 
-    public usuarioEntity() {
+    public usuarioEntity(int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
 
+    }
+
+    public String getCarnet() {
+        return carnet;
+    }
+
+    public void setCarnet(String carnet) {
+        this.carnet = carnet;
     }
 }
 
