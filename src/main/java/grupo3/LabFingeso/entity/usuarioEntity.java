@@ -27,6 +27,10 @@ public class usuarioEntity {
         this.contrasena = contrasena;
     }
 
+    public usuarioEntity() {
+
+    }
+
 
     public long getIdUsuario() {
         return idUsuario;
