@@ -1,11 +1,9 @@
 package grupo3.LabFingeso.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "usuario")
 public class usuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +12,7 @@ public class usuarioEntity {
     private String nombre;
     private int edad;
     private String correo;
+    private String carnet;
     private String licenciaConducir;
     private String contrasena;
 
