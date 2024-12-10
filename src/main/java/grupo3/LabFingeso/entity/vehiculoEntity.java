@@ -1,14 +1,16 @@
 package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "vehiculo")
+@NoArgsConstructor
 public class vehiculoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long idUsuario;
+    private long idVehiculo;
     private String marca;
     private String modelo;
     private String tipo;
@@ -19,8 +21,8 @@ public class vehiculoEntity {
     private double precioBase;
 
     // Constructor
-    public vehiculoEntity(long idUsuario, String marca, String modelo, String matricula, String tipo, int kilometraje, String estado, sucursalEntity sucursal, double precioBase) {
-        this.idUsuario = idUsuario;
+    public vehiculoEntity(long idVehiculo, String marca, String modelo, String matricula, String tipo, int kilometraje, String estado, sucursalEntity sucursal, double precioBase) {
+        this.idVehiculo = idVehiculo;
         this.marca = marca;
         this.modelo = modelo;
         this.matricula = matricula;
@@ -32,8 +34,8 @@ public class vehiculoEntity {
     }
 
     // Getters
-    public long getIdUsuario() {
-        return idUsuario;
+    public long getidVehiculo() {
+        return idVehiculo;
     }
 
     public String getMarca() {
@@ -73,8 +75,8 @@ public class vehiculoEntity {
         this.marca = marca;
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuario(long idVehiculo) {
+        this.idVehiculo = idVehiculo;
     }
 
     public void setModelo(String modelo) {

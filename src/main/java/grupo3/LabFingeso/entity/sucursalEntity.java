@@ -1,11 +1,13 @@
 package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "sucursal")
+@NoArgsConstructor
 public class sucursalEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
