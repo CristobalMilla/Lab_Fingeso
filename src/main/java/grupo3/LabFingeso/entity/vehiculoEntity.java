@@ -15,11 +15,11 @@ public class vehiculoEntity {
     private String matricula;
     private int kilometraje;
     private String estado;
-    private Sucursal sucursal;
+    private sucursalEntity sucursal;
     private double precioBase;
 
     // Constructor
-    public vehiculoEntity(long idUsuario, String marca, String modelo, String matricula, String tipo, int kilometraje, String estado, Sucursal sucursal, double precioBase) {
+    public vehiculoEntity(long idUsuario, String marca, String modelo, String matricula, String tipo, int kilometraje, String estado, sucursalEntity sucursal, double precioBase) {
         this.idUsuario = idUsuario;
         this.marca = marca;
         this.modelo = modelo;
@@ -60,7 +60,7 @@ public class vehiculoEntity {
         return kilometraje;
     }
 
-    public Sucursal getSucursal() {
+    public sucursalEntity getSucursal() {
         return sucursal;
     }
 
@@ -101,7 +101,7 @@ public class vehiculoEntity {
         this.precioBase = precioBase;
     }
 
-    public void setSucursal(Sucursal sucursal) {
+    public void setSucursal(sucursalEntity sucursal) {
         this.sucursal = sucursal;
     }
 }
