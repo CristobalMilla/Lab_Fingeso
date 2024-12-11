@@ -2,6 +2,9 @@ package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "usuario")
 public class usuarioEntity {
@@ -15,8 +18,11 @@ public class usuarioEntity {
     private String carnet;
     private String licenciaConducir;
     private String contrasena;
+    private String perfilActual;
+    @ElementCollection
+    private ArrayList<String> perfilesDisponibles;
 
-    public usuarioEntity(long idUsuario, int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
+    public usuarioEntity(long idUsuario, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
         this.idUsuario = idUsuario;
         this.rut = rut;
         this.nombre = nombre;
@@ -25,81 +31,52 @@ public class usuarioEntity {
         this.carnet = carnet;
         this.licenciaConducir = licenciaConducir;
         this.contrasena = contrasena;
+        this.perfilActual = null;
+        this.perfilesDisponibles = List.of("usuario");
     }
 
     public usuarioEntity() {
 
     }
 
-
     public long getIdUsuario() {
         return idUsuario;
-    }
-
-    public int getRut() {
-        return rut;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public String getLicenciaConducir() {
-        return licenciaConducir;
-    }
-
-    public String getContrasena() {
-        return contrasena;
     }
 
     public void setIdUsuario(long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
+    public int getRut() {
+        return rut;
+    }
+
     public void setRut(int rut) {
         this.rut = rut;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
     public void setEdad(int edad) {
         this.edad = edad;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public void setLicenciaConducir(String licenciaConducir) {
-        this.licenciaConducir = licenciaConducir;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public usuarioEntity(long idUsuario, int rut, String nombre, int edad, String correo, String licenciaConducir, String contrasena) {
-        this.idUsuario = idUsuario;
-        this.rut = rut;
-        this.nombre = nombre;
-        this.edad = edad;
-        this.correo = correo;
-        this.licenciaConducir = licenciaConducir;
-        this.contrasena = contrasena;
-    }
-
-    public usuarioEntity(int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
-
     }
 
     public String getCarnet() {
@@ -108,6 +85,38 @@ public class usuarioEntity {
 
     public void setCarnet(String carnet) {
         this.carnet = carnet;
+    }
+
+    public String getLicenciaConducir() {
+        return licenciaConducir;
+    }
+
+    public void setLicenciaConducir(String licenciaConducir) {
+        this.licenciaConducir = licenciaConducir;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getPerfilActual() {
+        return perfilActual;
+    }
+
+    public void setPerfilActual(String perfilActual) {
+        this.perfilActual = perfilActual;
+    }
+
+    public ArrayList<String> getPerfilesDisponibles() {
+        return perfilesDisponibles;
+    }
+
+    public void setPerfilesDisponibles(ArrayList<String> perfilesDisponibles) {
+        this.perfilesDisponibles = perfilesDisponibles;
     }
 }
 
