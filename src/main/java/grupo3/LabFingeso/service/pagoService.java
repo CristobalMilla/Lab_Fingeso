@@ -16,25 +16,25 @@ public class pagoService {
 
     // Create
     public pagoEntity save(pagoEntity pago) {
-        return pagoRepository.save(pago);
+        return pagoRepo.save(pago);
     }
 
     // Read
     public pagoEntity findById(Long id) {
-        return pagoRepository.findById(id).orElse(null);
+        return pagoRepo.findById(id).orElse(null);
     }
 
     public Iterable<pagoEntity> findAll() {
-        return pagoRepository.findAll();
+        return pagoRepo.findAll();
     }
 
     // Update
     public pagoEntity update(pagoEntity pago) {
-        return pagoRepository.save(pago);
+        return pagoRepo.save(pago);
     }
 
     // Delete
     public void deleteById(Long id) {
-        pagoRepository.deleteById(id);
+        pagoRepo.deleteById(id);
     }
 }

@@ -16,25 +16,25 @@ public class comprobanteService {
 
     // Create
     public comprobanteEntity save(comprobanteEntity comprobante) {
-        return comprobanteRepository.save(comprobante);
+        return comprobanteRepo.save(comprobante);
     }
 
     // Read
     public comprobanteEntity findById(Long id) {
-        return comprobanteRepository.findById(id).orElse(null);
+        return comprobanteRepo.findById(id).orElse(null);
     }
 
     public Iterable<comprobanteEntity> findAll() {
-        return comprobanteRepository.findAll();
+        return comprobanteRepo.findAll();
     }
 
     // Update
     public comprobanteEntity update(comprobanteEntity comprobante) {
-        return comprobanteRepository.save(comprobante);
+        return comprobanteRepo.save(comprobante);
     }
 
     // Delete
     public void deleteById(Long id) {
-        comprobanteRepository.deleteById(id);
+        comprobanteRepo.deleteById(id);
     }
 }

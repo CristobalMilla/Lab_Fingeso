@@ -8,6 +8,7 @@ import grupo3.LabFingeso.entity.arriendoEntity;
 import grupo3.LabFingeso.entity.comprobanteEntity;
 import jakarta.persistence.*;
 
+import lombok.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
