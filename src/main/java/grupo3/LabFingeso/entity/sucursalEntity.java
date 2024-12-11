@@ -15,6 +15,7 @@ public class sucursalEntity {
     private long idSucursal;
     private String nombre;
     private String direccion;
+    @ElementCollection
     private List<vehiculoEntity> vehiculos;
 
     // Constructor

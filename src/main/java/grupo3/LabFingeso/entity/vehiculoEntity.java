@@ -17,6 +17,7 @@ public class vehiculoEntity {
     private String matricula;
     private int kilometraje;
     private String estado;
+    @OneToOne
     private sucursalEntity sucursal;
     private double precioBase;
 

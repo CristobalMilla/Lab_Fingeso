@@ -17,11 +17,17 @@ public class arriendoEntity {
     private Date fechaFin;
     private double costoTotal;
     private String estado;
+    @OneToOne
     private usuarioEntity cliente;
+    @OneToOne
     private vehiculoEntity vehiculo;
+    @OneToOne
     private sucursalEntity sucursalRecogida;
+    @OneToOne
     private sucursalEntity sucursalDevolucion = null; // De primera no se sabe donde se devuelve(?
+    @OneToOne
     private pagoEntity Pago;
+    @OneToOne
     private comprobanteEntity comprobante;
 
     // Constructor
