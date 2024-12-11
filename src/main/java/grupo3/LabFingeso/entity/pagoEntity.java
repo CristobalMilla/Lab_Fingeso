@@ -1,8 +1,11 @@
 package grupo3.LabFingeso.entity;
 
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import grupo3.LabFingeso.entity.arriendoEntity;
-import grupo3.LabFingeso.entity.arriendoEntity.Comprobante;
+import grupo3.LabFingeso.entity.comprobanteEntity;
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -31,5 +34,5 @@ public class pagoEntity {
 
     @OneToOne(mappedBy = "pagoEntity", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private Comprobante comprobante;
+    private comprobanteEntity comprobante;
 }
