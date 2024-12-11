@@ -7,11 +7,18 @@ import grupo3.LabFingeso.repository.usuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class usuarioService {
-    @Autowired
-    private usuarioRepository usuarioRepo;
+
+    private final usuarioRepository usuarioRepo;
     private tipoUsuarioRepository tipoUsuarioRepo;
+    @Autowired
+    public usuarioService(usuarioRepository usuarioRepo) {
+        this.usuarioRepo = usuarioRepo;
+    }
+
     public usuarioEntity register(int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena){
         usuarioEntity usuario;
         usuario = new usuarioEntity(rut, nombre, edad, correo, carnet, licenciaConducir, contrasena);
@@ -117,6 +124,28 @@ public class usuarioService {
         } catch (Exception e){
             System.out.println("Perfil habilitarPerfil no encontrado");
         }
+    }
+
+    public usuarioEntity getUsuarioById(long idUsuario) {
+        return usuarioRepo.findById(idUsuario).orElse(null);
+    }
+
+    public usuarioEntity getUsuarioByCorreo(String correo) {
+        return usuarioRepo.findByCorreo(correo);
+    }
+
+    public List<usuarioEntity> getAllUsuarios(long idUsuario) {
+        return usuarioRepo.findAll();
+    }
+
+
+    public usuarioEntity updateUsuario(usuarioEntity usuario) {
+        return usuarioRepo.save(usuario);
+    }
+
+
+    public void deleteUsuarioById(long idUsuario) {
+        usuarioRepo.deleteById(idUsuario);
     }
 
 }
