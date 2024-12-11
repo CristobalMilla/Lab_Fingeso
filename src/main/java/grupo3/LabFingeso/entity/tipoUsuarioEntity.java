@@ -3,6 +3,8 @@ package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "tipoUsuario")
 public class tipoUsuarioEntity {
@@ -11,6 +13,9 @@ public class tipoUsuarioEntity {
     private long idTipoUsuario;
     private String nombre;
     private String descripcion;
+
+    @ManyToMany(targetEntity = permisoEntity.class)
+    private Set permisoSet;
 
     public tipoUsuarioEntity(long idTipoUsuario, String nombre, String descripcion) {
         this.idTipoUsuario = idTipoUsuario;
@@ -21,6 +26,7 @@ public class tipoUsuarioEntity {
     public tipoUsuarioEntity() {
 
     }
+
 
     public long getIdTipoUsuario() {
         return idTipoUsuario;
@@ -44,5 +50,13 @@ public class tipoUsuarioEntity {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Set getPermisoSet() {
+        return permisoSet;
+    }
+
+    public void setPermisoSet(Set permisoSet) {
+        this.permisoSet = permisoSet;
     }
 }
