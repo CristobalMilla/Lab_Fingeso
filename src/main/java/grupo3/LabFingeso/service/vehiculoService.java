@@ -1,18 +1,22 @@
 package grupo3.LabFingeso.service;
 
-import grupo3.LabFingeso.entity.sucursalEntity;
 import grupo3.LabFingeso.entity.vehiculoEntity;
 import grupo3.LabFingeso.repository.vehiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class vehiculoService {
     @Autowired
     private vehiculoRepository vehiculoRepo;
 
-    public vehiculoEntity crearVehiculo(long idVehiculo, String marca, String modelo, String matricula, String tipo, int kilometraje, String estado, sucursalEntity sucursal, double precioBase){
-        vehiculoEntity nuevoVehiculo = new vehiculoEntity(idVehiculo, marca, modelo, matricula, tipo, kilometraje, estado, sucursal, precioBase);
+    public vehiculoService(vehiculoRepository vehiculoRepo) {
+        this.vehiculoRepo = vehiculoRepo;
+    }
+
+    public vehiculoEntity createVehiculo(vehiculoEntity nuevoVehiculo){
         vehiculoEntity existenteVehiculo = vehiculoRepo.findById(nuevoVehiculo.getidVehiculo());
         if(existenteVehiculo != null){
             return null;
@@ -22,7 +26,19 @@ public class vehiculoService {
         }
     }
 
-    public boolean eliminarVehiculo(long idVehiculo){
+    public vehiculoEntity getVehiculoById(long idVehiculo){
+        return vehiculoRepo.findById(idVehiculo);
+    }
+
+    public vehiculoEntity updateVehiculo(vehiculoEntity vehiculoModificado){
+        return vehiculoRepo.save(vehiculoModificado);
+    }
+
+    public List<vehiculoEntity> getAllVehiculos(){
+        return vehiculoRepo.findAll();
+    }
+
+    public boolean eliminateVehiculo(long idVehiculo){
         if(vehiculoRepo.findById(idVehiculo) != null){
             try {
                 vehiculoRepo.deleteById(idVehiculo);
