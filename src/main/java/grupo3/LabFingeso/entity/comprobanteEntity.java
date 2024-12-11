@@ -35,6 +35,6 @@ public class comprobanteEntity {
 
     @OneToOne
     @JoinColumn(name = "pago_id")
-    @JsonBackReference
+    //@JsonBackReference
     private pagoEntity pago;
 }

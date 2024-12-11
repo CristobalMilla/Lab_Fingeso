@@ -2,8 +2,8 @@ package grupo3.LabFingeso.entity;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+//import com.fasterxml.jackson.annotation.JsonBackReference;
+//import com.fasterxml.jackson.annotation.JsonManagedReference;
 import grupo3.LabFingeso.entity.arriendoEntity;
 import grupo3.LabFingeso.entity.comprobanteEntity;
 import jakarta.persistence.*;
@@ -29,10 +29,10 @@ public class pagoEntity {
     //ver dependencias circulares (?)
     @OneToOne
     @JoinColumn(name = "arriendo_id")
-    @JsonBackReference
+    //@JsonBackReference
     private arriendoEntity arriendo;
 
     @OneToOne(mappedBy = "pagoEntity", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    //@JsonManagedReference
     private comprobanteEntity comprobante;
 }
