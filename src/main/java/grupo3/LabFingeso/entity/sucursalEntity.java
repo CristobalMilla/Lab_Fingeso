@@ -3,7 +3,7 @@ package grupo3.LabFingeso.entity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "sucursal")
@@ -15,11 +15,11 @@ public class sucursalEntity {
     private long idSucursal;
     private String nombre;
     private String direccion;
-    @ElementCollection
-    private List<vehiculoEntity> vehiculos;
+    @OneToMany(targetEntity = vehiculoEntity.class)
+    private Set<vehiculoEntity> vehiculos;
 
     // Constructor
-    public sucursalEntity(String nombre, long idSucursal, String direccion, List<vehiculoEntity> vehiculos) {
+    public sucursalEntity(String nombre, long idSucursal, String direccion, Set<vehiculoEntity> vehiculos) {
         this.nombre = nombre;
         this.idSucursal = idSucursal;
         this.direccion = direccion;
@@ -27,7 +27,7 @@ public class sucursalEntity {
     }
 
     // Getters
-    public List<vehiculoEntity> getVehiculos() {
+    public Set<vehiculoEntity> getVehiculos() {
         return vehiculos;
     }
 
@@ -57,7 +57,7 @@ public class sucursalEntity {
         this.direccion = direccion;
     }
 
-    public void setVehiculos(List<vehiculoEntity> vehiculos) {
+    public void setVehiculos(Set<vehiculoEntity> vehiculos) {
         this.vehiculos = vehiculos;
     }
 }

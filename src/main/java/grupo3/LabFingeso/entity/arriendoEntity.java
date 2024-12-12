@@ -40,7 +40,7 @@ public class arriendoEntity {
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         this.sucursalRecogida = sucursalRecogida;
-        Pago = pago;
+        this.Pago = pago;
         this.comprobante = comprobante;
     }
 

@@ -17,7 +17,7 @@ public class vehiculoService {
     }
 
     public vehiculoEntity createVehiculo(vehiculoEntity nuevoVehiculo){
-        vehiculoEntity existenteVehiculo = vehiculoRepo.findById(nuevoVehiculo.getidVehiculo());
+        vehiculoEntity existenteVehiculo = vehiculoRepo.findById(nuevoVehiculo.getidVehiculo()).orElse(null);
         if(existenteVehiculo != null){
             return null;
         }
@@ -27,7 +27,7 @@ public class vehiculoService {
     }
 
     public vehiculoEntity getVehiculoById(long idVehiculo){
-        return vehiculoRepo.findById(idVehiculo);
+        return vehiculoRepo.findById(idVehiculo).orElse(null);
     }
 
     public vehiculoEntity updateVehiculo(vehiculoEntity vehiculoModificado){
@@ -38,8 +38,8 @@ public class vehiculoService {
         return vehiculoRepo.findAll();
     }
 
-    public boolean eliminateVehiculo(long idVehiculo){
-        if(vehiculoRepo.findById(idVehiculo) != null){
+    public boolean eliminateVehiculoById(long idVehiculo){
+        if(vehiculoRepo.findById(idVehiculo).orElse(null) != null){
             try {
                 vehiculoRepo.deleteById(idVehiculo);
                 return true;

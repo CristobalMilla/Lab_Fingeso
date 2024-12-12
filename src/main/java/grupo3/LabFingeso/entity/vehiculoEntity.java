@@ -1,11 +1,9 @@
 package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "vehiculo")
-@NoArgsConstructor
 public class vehiculoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,12 +15,11 @@ public class vehiculoEntity {
     private String matricula;
     private int kilometraje;
     private String estado;
-    @OneToOne
-    private sucursalEntity sucursal;
     private double precioBase;
+    private String fotoVehiculo;
 
     // Constructor
-    public vehiculoEntity(long idVehiculo, String marca, String modelo, String matricula, String tipo, int kilometraje, String estado, sucursalEntity sucursal, double precioBase) {
+    public vehiculoEntity(long idVehiculo, String marca, String modelo, String matricula, String tipo, int kilometraje, String estado, double precioBase, String fotoVehiculo) {
         this.idVehiculo = idVehiculo;
         this.marca = marca;
         this.modelo = modelo;
@@ -30,8 +27,11 @@ public class vehiculoEntity {
         this.tipo = tipo;
         this.kilometraje = kilometraje;
         this.estado = estado;
-        this.sucursal = sucursal;
         this.precioBase = precioBase;
+        this.fotoVehiculo = fotoVehiculo;
+    }
+
+    public vehiculoEntity(){
     }
 
     // Getters
@@ -63,12 +63,12 @@ public class vehiculoEntity {
         return kilometraje;
     }
 
-    public sucursalEntity getSucursal() {
-        return sucursal;
-    }
-
     public double getPrecioBase() {
         return precioBase;
+    }
+
+    public String getfotoVehiculo() {
+        return fotoVehiculo;
     }
 
     // Setters
@@ -104,7 +104,7 @@ public class vehiculoEntity {
         this.precioBase = precioBase;
     }
 
-    public void setSucursal(sucursalEntity sucursal) {
-        this.sucursal = sucursal;
+    public void setFotoVehiculo(String fotoVehiculo) {
+        this.fotoVehiculo = fotoVehiculo;
     }
 }
