@@ -1,10 +1,9 @@
 package grupo3.LabFingeso.controller;
 
-import grupo3.LabFingeso.entity.sucursalEntity;
+
 import grupo3.LabFingeso.entity.usuarioEntity;
 import grupo3.LabFingeso.service.usuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class usuarioController {
 
     @PostMapping("/cambiarPerfil/")
     public void cambiarPerfil(@RequestBody usuarioEntity nuevo, @RequestParam String perfilNuevo){
-        usuarioService.cambiarPerfil(nuevo.getCorreo(), nuevo.getPerfilActual());
+        usuarioService.cambiarPerfil(nuevo.getCorreo(), perfilNuevo);
     }
 
     @PostMapping("/obtenerUsuario/{correoUsuario/")
