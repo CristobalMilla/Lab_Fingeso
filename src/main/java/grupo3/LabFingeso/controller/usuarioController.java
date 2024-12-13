@@ -36,7 +36,7 @@ public class usuarioController {
 
     @PostMapping("/cambiarPerfil/")
     public void cambiarPerfil(@RequestBody usuarioEntity nuevo, @RequestParam String perfilNuevo){
-        usuarioService.cambiarPerfil(nuevo.getCorreo(), nuevo.getPerfilActual());
+        usuarioService.cambiarPerfil(nuevo.getCorreo(), perfilNuevo);
     }
 
     @PostMapping("/obtenerUsuario/{correoUsuario/")
