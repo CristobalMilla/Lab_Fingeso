@@ -40,6 +40,10 @@ public class usuarioEntity {
 
     }
 
+    public usuarioEntity() {
+
+    }
+
     public long getIdUsuario() {
         return idUsuario;
     }

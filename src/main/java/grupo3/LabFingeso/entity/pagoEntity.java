@@ -33,7 +33,7 @@ public class pagoEntity {
     //@JsonBackReference
     private arriendoEntity arriendo;
 
-    @OneToOne(mappedBy = "pagoEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne
     //@JsonManagedReference
     private comprobanteEntity comprobante;
 }
