@@ -16,6 +16,10 @@ public class arriendoEntity {
     private Date fechaInicio;
     private Date fechaFin;
     private double costoTotal;
+    /* en uso
+     * retraso
+     * terminado
+     * retirar   */
     private String estado;
     @OneToOne
     private usuarioEntity cliente;
@@ -31,7 +35,8 @@ public class arriendoEntity {
     private comprobanteEntity comprobante;
 
     // Constructor
-    public arriendoEntity(long idArriendo, Date fechaInicio, Date fechaFin, double costoTotal, String estado, usuarioEntity cliente, vehiculoEntity vehiculo, sucursalEntity sucursalRecogida, pagoEntity pago, comprobanteEntity comprobante) {
+    public arriendoEntity(long idArriendo, Date fechaInicio, Date fechaFin, double costoTotal, String estado, usuarioEntity cliente,
+                          vehiculoEntity vehiculo, sucursalEntity sucursalRecogida, pagoEntity pago, comprobanteEntity comprobante){
         this.idArriendo = idArriendo;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -128,7 +133,7 @@ public class arriendoEntity {
     }
 
     public void setPago(pagoEntity pago) {
-        Pago = pago;
+        this.Pago = pago;
     }
 
     public void setComprobante(comprobanteEntity comprobante) {

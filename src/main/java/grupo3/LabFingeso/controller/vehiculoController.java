@@ -1,5 +1,6 @@
 package grupo3.LabFingeso.controller;
 
+import grupo3.LabFingeso.entity.arriendoEntity;
 import grupo3.LabFingeso.entity.vehiculoEntity;
 import grupo3.LabFingeso.service.vehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,11 @@ import java.util.List;
 public class vehiculoController {
     @Autowired
     private vehiculoService serviceVehiculo;
+
+    @PutMapping("/cambiarDisponibilidad")
+    public vehiculoEntity cambiarDisponibilidad(@RequestParam long idVehiculo, String estado){
+        return serviceVehiculo.cambiarDisponibilidad(idVehiculo, estado);
+    }
 
     @PostMapping("/crearVehiculo")
     public vehiculoEntity crearVehiculo(@RequestBody vehiculoEntity nuevoVehiculo) {

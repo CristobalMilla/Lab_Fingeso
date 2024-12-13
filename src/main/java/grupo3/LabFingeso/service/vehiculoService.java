@@ -16,6 +16,19 @@ public class vehiculoService {
         this.vehiculoRepo = vehiculoRepo;
     }
 
+    public vehiculoEntity cambiarDisponibilidad(long idVehiculo, String estado){
+        vehiculoEntity vehiculo = vehiculoRepo.findById(idVehiculo).orElse(null);
+        if(vehiculo != null){
+            vehiculo.setEstado(estado);
+            if(estado.equalsIgnoreCase("disponible")
+            || estado.equalsIgnoreCase("ocupado")
+            || estado.equalsIgnoreCase("mantenimiento")) {
+                return vehiculoRepo.save(vehiculo);
+            }
+        }
+        return null;
+    }
+
     public vehiculoEntity createVehiculo(vehiculoEntity nuevoVehiculo){
         vehiculoEntity existenteVehiculo = vehiculoRepo.findById(nuevoVehiculo.getidVehiculo()).orElse(null);
         if(existenteVehiculo != null){

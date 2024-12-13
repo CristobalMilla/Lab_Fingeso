@@ -16,10 +16,14 @@ public class vehiculoEntity {
     private int kilometraje;
     private String estado;
     private double precioBase;
+    private char categoria;
+    private String carroceria;
+    private char transmision;
     private String fotoVehiculo;
 
     // Constructor
-    public vehiculoEntity(long idVehiculo, String marca, String modelo, String matricula, String tipo, int kilometraje, String estado, double precioBase, String fotoVehiculo) {
+    public vehiculoEntity(long idVehiculo, String marca, String modelo, String matricula, String tipo, int kilometraje,
+                          String estado, double precioBase, char categoria, String carroceria, char transmision, String fotoVehiculo) {
         this.idVehiculo = idVehiculo;
         this.marca = marca;
         this.modelo = modelo;
@@ -28,6 +32,9 @@ public class vehiculoEntity {
         this.kilometraje = kilometraje;
         this.estado = estado;
         this.precioBase = precioBase;
+        this.categoria = categoria;
+        this.carroceria = carroceria;
+        this.transmision = transmision;
         this.fotoVehiculo = fotoVehiculo;
     }
 
@@ -67,6 +74,18 @@ public class vehiculoEntity {
         return precioBase;
     }
 
+    public String getCarroceria() {
+        return carroceria;
+    }
+
+    public char getTransmision() {
+        return transmision;
+    }
+
+    public char getCategoria() {
+        return categoria;
+    }
+
     public String getfotoVehiculo() {
         return fotoVehiculo;
     }
@@ -102,6 +121,18 @@ public class vehiculoEntity {
 
     public void setPrecioBase(double precioBase) {
         this.precioBase = precioBase;
+    }
+
+    public void setCarroceria(String carroceria) {
+        this.carroceria = carroceria;
+    }
+
+    public void setCategoria(char categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setTransmision(char transmision) {
+        this.transmision = transmision;
     }
 
     public void setFotoVehiculo(String fotoVehiculo) {

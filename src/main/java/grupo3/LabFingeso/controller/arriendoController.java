@@ -13,10 +13,15 @@ import java.util.List;
 public class arriendoController {
     @Autowired
     private arriendoService serviceArriendo;
-    
-    @PostMapping("/crearArriendo")
-    public arriendoEntity createArriendo(@RequestBody arriendoEntity nuevoArriendo){
-        return serviceArriendo.createArriendo(nuevoArriendo);
+
+    @PostMapping("/arrendarVehiculo")
+    public arriendoEntity arrendar(@RequestBody arriendoEntity nuevoArriendo){
+        return serviceArriendo.arrendar(nuevoArriendo);
+    }
+
+    @GetMapping("/obtenerPorCliente")
+    public List<arriendoEntity> getArriendoByIdUsuario(@RequestParam long idCliente){
+        return serviceArriendo.getArriendoByidCliente(idCliente);
     }
 
     @GetMapping("/obtenerArriendo/{idArriendo}")
