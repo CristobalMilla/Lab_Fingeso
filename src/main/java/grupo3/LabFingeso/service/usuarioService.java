@@ -54,34 +54,47 @@ public class usuarioService {
     public void elegirPerfil(String correo, String cambioPerfil) {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
 
-        try {
-            System.out.println("Los perfiles disponibles del usuario son: ");
-            for(String perfil : usuario.getPerfilesDisponibles()) {
-                System.out.println("Perfil" + perfil);
-            }
-            if (usuario.getPerfilesDisponibles().contains(cambioPerfil)) {
-                usuario.setPerfilActual(cambioPerfil);
-                usuarioRepo.save(usuario);
+        try{
+            if(cambioPerfil.equals("desarrollador") || cambioPerfil.equals("administrador") || cambioPerfil.equals("empleado") || cambioPerfil.equals("cliente") || cambioPerfil.equals("usuario")){
+                try {
+                    System.out.println("Los perfiles disponibles del usuario son: ");
+                    for(String perfil : usuario.getPerfilesDisponibles()) {
+                        System.out.println("Perfil" + perfil);
+                    }
+                    if (usuario.getPerfilesDisponibles().contains(cambioPerfil)) {
+                        usuario.setPerfilActual(cambioPerfil);
+                        usuarioRepo.save(usuario);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Perfil elegirPerfil no encontrado dentro de los perfiles disponibles del usuario");
+                }
             }
         } catch (Exception e) {
-            System.out.println("Perfil elegirPerfil no encontrado dentro de los perfiles disponibles del usuario");
+            System.out.println("Perfil elegirPerfil no encontrado en el sistema");
         }
     }
 
     public void cambiarPerfil(String correo, String cambioPerfil) {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
 
-        try {
-            System.out.println("Los perfiles disponibles del usuario son: ");
-            for(String perfil : usuario.getPerfilesDisponibles()) {
-                System.out.println("Perfil" + perfil);
-            }
-            if (usuario.getPerfilesDisponibles().contains(cambioPerfil)) {
-                usuario.setPerfilActual(cambioPerfil);
-                usuarioRepo.save(usuario);
+        try{
+            if(cambioPerfil.equals("cliente") || cambioPerfil.equals("administrador") || cambioPerfil.equals("empleado")|| cambioPerfil.equals("desarrollador") || cambioPerfil.equals("usuario"))
+            {
+                try {
+                    System.out.println("Los perfiles disponibles del usuario son: ");
+                    for(String perfil : usuario.getPerfilesDisponibles()) {
+                        System.out.println("Perfil" + perfil);
+                    }
+                    if (usuario.getPerfilesDisponibles().contains(cambioPerfil)) {
+                        usuario.setPerfilActual(cambioPerfil);
+                        usuarioRepo.save(usuario);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Perfil cambiarPerfil no encontrado dentro de los perfiles disponibles del usuario");
+                }
             }
         } catch (Exception e) {
-            System.out.println("Perfil cambiarPerfil no encontrado dentro de los perfiles disponibles del usuario");
+            System.out.println("perfil cambiarPerfil no encontrado en el sistema");
         }
     }
 
@@ -89,21 +102,28 @@ public class usuarioService {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
         usuarioEntity usuarioActual = usuarioRepo.findByCorreo(correoHabilitador);
 
-        try {
-            if (usuarioActual.getPerfilActual().equals("administrador") || usuarioActual.getPerfilActual().equals("desarrollador")) {
+        try{
+            if(agregarPerfil.equals("cliente") || agregarPerfil.equals("administrador") || agregarPerfil.equals("empleado")|| agregarPerfil.equals("desarrollador")){
                 try {
-                    if (!usuario.getPerfilesDisponibles().contains(agregarPerfil)) {
-                        usuario.getPerfilesDisponibles().add(agregarPerfil);
-                        usuarioRepo.save(usuario);
+                    if (usuarioActual.getPerfilActual().equals("administrador") || usuarioActual.getPerfilActual().equals("desarrollador")) {
+                        try {
+                            if (!usuario.getPerfilesDisponibles().contains(agregarPerfil)) {
+                                usuario.getPerfilesDisponibles().add(agregarPerfil);
+                                usuarioRepo.save(usuario);
+                            }
+                        } catch (Exception e) {
+                            System.out.println("El perfil habilitarPerfil ya está habilitado para el usuario");
+                        }
                     }
                 } catch (Exception e) {
-                    System.out.println("El perfil habilitarPerfil ya está habilitado para el usuario");
+                    System.out.println("No tiene el perfil habilitado para realizar esta accion");
                 }
             }
         } catch (Exception e){
-            System.out.println("No tiene el perfil habilitado para realizar esta accion");
+            System.out.println("perfil no encontrado en el sistema");
         }
     }
+
 
 
     public usuarioEntity getUsuarioById(long idUsuario) {
