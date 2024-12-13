@@ -1,10 +1,8 @@
 package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.ManyToMany;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 @Entity
 @Table(name = "usuario")
@@ -23,14 +21,8 @@ public class usuarioEntity {
     @ElementCollection
     private ArrayList<String> perfilesDisponibles;
 
-    @ManyToMany(targetEntity = tipoUsuarioEntity.class)
-    private Set tiposUsuarioSet;
 
-    @ManyToMany(targetEntity = permisoEntity.class)
-    private Set permisoSet;
-
-
-    public usuarioEntity(long idUsuario, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
+    public usuarioEntity(long idUsuario, int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
         this.idUsuario = idUsuario;
         this.rut = rut;
         this.nombre = nombre;
@@ -44,7 +36,7 @@ public class usuarioEntity {
         this.perfilesDisponibles.add("usuario");
     }
 
-    public usuarioEntity() {
+    public usuarioEntity(int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
 
     }
 

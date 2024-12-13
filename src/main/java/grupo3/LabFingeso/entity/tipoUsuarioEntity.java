@@ -3,19 +3,33 @@ package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "tipoUsuario")
 public class tipoUsuarioEntity {
+    /*public enum tipoPermiso{
+        habilitarPerfil,
+        modificarFlota,
+        poderArrendar,
+        verRegistro,
+        verCatalogo,
+        buscarVehiculo,
+        modificarVehiculo
+    }*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idTipoUsuario;
     private String nombre;
     private String descripcion;
+    //private List<String> tipoPermisos;
 
-    @ManyToMany(targetEntity = permisoEntity.class)
-    private Set permisoSet;
+    //@ManyToMany
+    //@JoinTable(name = "tipoUsuario_Usuario",
+            //joinColumns = @JoinColumn(name = "tipo_usuario_id"),
+            //inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+            //private List<usuarioEntity> usuarios;
 
     public tipoUsuarioEntity(long idTipoUsuario, String nombre, String descripcion) {
         this.idTipoUsuario = idTipoUsuario;
@@ -52,11 +66,4 @@ public class tipoUsuarioEntity {
         this.descripcion = descripcion;
     }
 
-    public Set getPermisoSet() {
-        return permisoSet;
-    }
-
-    public void setPermisoSet(Set permisoSet) {
-        this.permisoSet = permisoSet;
-    }
 }

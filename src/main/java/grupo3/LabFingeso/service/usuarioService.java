@@ -19,7 +19,9 @@ public class usuarioService {
         this.usuarioRepo = usuarioRepo;
     }
 
-    public usuarioEntity register(int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena){
+    public usuarioEntity registro(int rut, String nombre, int edad,
+                                  String correo, String carnet, String licenciaConducir,
+                                  String contrasena) {
         usuarioEntity usuario;
         usuario = new usuarioEntity(rut, nombre, edad, correo, carnet, licenciaConducir, contrasena);
         usuarioEntity existente = usuarioRepo.findByCorreo(usuario.getCorreo());
@@ -29,27 +31,27 @@ public class usuarioService {
         return usuarioRepo.save(usuario);
     }
 
-    public int login(String correo, String contrasena) {
-        usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
+    public usuarioEntity login(String correo, String contrasena) {
+        usuarioEntity usuarioActual;
         try {
-            if (usuario != null) {
-                try{
-                    if (usuario.getContrasena().equals(contrasena)) {
-                        if (usuario.getPerfilActual() == null || usuario.getPerfilActual().isEmpty()) {
-                            return 1; // Logueo exitoso
-                        }
-                    }
-                } catch(Exception e) {
-                    System.out.println("Contraseña incorrecta");
-                    return 0; // Contraseña incorrecta
-                }
-            }
+             usuarioActual = usuarioRepo.findByCorreo(correo);
+
         } catch (Exception e) {
-                System.out.println("Usuario no encontrado con el correo");
-                return 0; // Usuario no encontrado
+            System.out.println("Usuario no encontrado con el correo");
+            return null;
         }
-        return 0;
+        if (usuarioActual.getContrasena().equals(contrasena)) {
+            if (usuarioActual.getPerfilActual() == null || usuarioActual.getPerfilActual().isEmpty()) {
+                return usuarioActual;
+            } else {
+                return null;
+            }
+        }else{
+            System.out.println("Contraseña incorrecta");
+            return null;
+        }
     }
+
 
     public void elegirPerfil(String correo, String cambioPerfil) {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
@@ -101,13 +103,12 @@ public class usuarioService {
         }
     }
 
-    public void habilitarPerfil(String correo, String agregarPerfil, String perfilHabilitador) {
+    public void agregarPerfilAUsuarioExistente(String correo, String agregarPerfil) {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
         tipoUsuarioEntity existente = tipoUsuarioRepo.findByPerfil(agregarPerfil);
-        try {
             if (existente != null) {
                 try {
-                    if (perfilHabilitador == "administrador" || perfilHabilitador == "desarrollador") {
+                    if (usuarioActual.getPerfilActual().equals("administrador") || usuarioActual.getPerfilActual().equals("desarrollador")) {
                         try {
                             if (!usuario.getPerfilesDisponibles().contains(agregarPerfil)) {
                                 usuario.getPerfilesDisponibles().add(agregarPerfil);
@@ -121,9 +122,6 @@ public class usuarioService {
                     System.out.println("No tiene el perfil habilitado para realizar esta accion");
                 }
             }
-        } catch (Exception e){
-            System.out.println("Perfil habilitarPerfil no encontrado");
-        }
     }
 
     public usuarioEntity getUsuarioById(long idUsuario) {
