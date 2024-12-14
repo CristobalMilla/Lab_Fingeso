@@ -3,6 +3,7 @@ package grupo3.LabFingeso.entity;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -18,12 +19,14 @@ public class usuarioEntity {
     private String licenciaConducir;
     private String contrasena;
     private String perfilActual;
+
     @ElementCollection
-    private ArrayList<String> perfilesDisponibles;
+    @CollectionTable(name = "usuario_perfiles", joinColumns = @JoinColumn(name = "idUsuario"))
+    @Column(name = "perfil")
+    private List<String> perfilesDisponibles;
 
 
-    public usuarioEntity(long idUsuario, int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
-        this.idUsuario = idUsuario;
+    public usuarioEntity(int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
         this.rut = rut;
         this.nombre = nombre;
         this.edad = edad;
@@ -36,12 +39,7 @@ public class usuarioEntity {
         this.perfilesDisponibles.add("usuario");
     }
 
-    public usuarioEntity(int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
-
-    }
-
     public usuarioEntity() {
-
     }
 
     public long getIdUsuario() {
@@ -116,11 +114,12 @@ public class usuarioEntity {
         this.perfilActual = perfilActual;
     }
 
-    public ArrayList<String> getPerfilesDisponibles() {
+
+    public List<String> getPerfilesDisponibles() {
         return perfilesDisponibles;
     }
 
-    public void setPerfilesDisponibles(ArrayList<String> perfilesDisponibles) {
+    public void setPerfilesDisponibles(List<String> perfilesDisponibles) {
         this.perfilesDisponibles = perfilesDisponibles;
     }
 }

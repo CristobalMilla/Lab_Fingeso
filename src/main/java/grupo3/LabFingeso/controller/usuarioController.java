@@ -15,6 +15,8 @@ public class usuarioController {
     @Autowired
     private usuarioService usuarioService;
 
+
+
     @PostMapping("/register")
     public usuarioEntity registro(@RequestBody usuarioEntity nuevoUsuario) {
         return usuarioService.registro(nuevoUsuario.getRut(), nuevoUsuario.getNombre(),

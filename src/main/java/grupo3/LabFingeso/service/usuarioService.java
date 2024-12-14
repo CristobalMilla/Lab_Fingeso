@@ -1,5 +1,6 @@
 package grupo3.LabFingeso.service;
 
+import grupo3.LabFingeso.entity.sucursalEntity;
 import grupo3.LabFingeso.entity.tipoUsuarioEntity;
 import grupo3.LabFingeso.entity.usuarioEntity;
 import grupo3.LabFingeso.repository.tipoUsuarioRepository;
@@ -19,15 +20,15 @@ public class usuarioService {
     }
 
     public usuarioEntity registro(int rut, String nombre, int edad,
-                                  String correo, String carnet, String licenciaConducir,
-                                  String contrasena) {
-        usuarioEntity usuario;
-        usuario = new usuarioEntity(rut, nombre, edad, correo, carnet, licenciaConducir, contrasena);
+                                       String correo, String carnet, String licenciaConducir,
+                                       String contrasena) {
+        usuarioEntity usuario = new usuarioEntity(rut, nombre, edad, correo, carnet, licenciaConducir, contrasena);
         usuarioEntity existente = usuarioRepo.findByCorreo(usuario.getCorreo());
         if (existente != null){
             return null;
+        } else {
+            return usuarioRepo.save(usuario);
         }
-        return usuarioRepo.save(usuario);
     }
 
     public int login(String correo, String contrasena) {
@@ -123,8 +124,6 @@ public class usuarioService {
             System.out.println("perfil no encontrado en el sistema");
         }
     }
-
-
 
     public usuarioEntity getUsuarioById(long idUsuario) {
         return usuarioRepo.findById(idUsuario).orElse(null);
