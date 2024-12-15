@@ -40,7 +40,7 @@ public class usuarioController {
         usuarioService.cambiarPerfil(nuevo.getCorreo(), perfilNuevo);
     }
 
-    @PostMapping("/obtenerUsuario/{correoUsuario}/")
+    @GetMapping("/obtenerUsuario/{correoUsuario}/")
     public usuarioEntity getUsuarioByName(@PathVariable String correoUsuario){
         return usuarioService.getUsuarioByCorreo(correoUsuario);
     }
