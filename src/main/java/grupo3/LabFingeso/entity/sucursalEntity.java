@@ -7,7 +7,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "sucursal")
-@NoArgsConstructor
 public class sucursalEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +23,10 @@ public class sucursalEntity {
         this.idSucursal = idSucursal;
         this.direccion = direccion;
         this.vehiculos = vehiculos;
+    }
+
+    public sucursalEntity(){
+
     }
 
     // Getters

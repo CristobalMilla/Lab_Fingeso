@@ -1,6 +1,7 @@
 package grupo3.LabFingeso.service;
 
 import grupo3.LabFingeso.entity.arriendoEntity;
+import grupo3.LabFingeso.entity.vehiculoEntity;
 import grupo3.LabFingeso.repository.arriendoRepository;
 import grupo3.LabFingeso.repository.usuarioRepository;
 import grupo3.LabFingeso.repository.vehiculoRepository;
@@ -52,7 +53,13 @@ public class arriendoService {
     }
 
     private boolean comprobarFechasOtrosArriendos(arriendoEntity nuevoArriendo){
-        nuevoArriendo.getVehiculo().getidVehiculo();
+        vehiculoEntity vehiculoArredado = vehiculoRepo.findById(nuevoArriendo.getVehiculo().getidVehiculo()).orElse(null);
+        for(arriendoEntity arriendoExistente : arriendoRepo.findByVehiculo(vehiculoArredado)) {
+            if (arriendoExistente.getFechaInicio().getTime() > nuevoArriendo.getFechaInicio().getTime()
+                    || arriendoExistente.getFechaInicio().getTime() < nuevoArriendo.getFechaFin().getTime()) {
+                return true;
+            }
+        }
         return false;
     }
 
