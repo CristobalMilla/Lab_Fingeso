@@ -1,5 +1,5 @@
 <script setup>
-
+  import styles from '@/components/styles.vue';
 
 </script>
 
@@ -47,12 +47,13 @@ import axios from 'axios'
 //Redireccionamiento
 //Usuario
 function redireccionarASubpaginaSeleccionTipoUsuario(){
-    window.location.href = '/tipoUsuario';
+    //CAMBIAR POR /tipoUsuario cuando se pueda
+    window.location.href = '/menuPrincipalAdmin';
 
 }
 //Usuario Anonimo
 function redireccionarASubpaginaUsuarioAnonimo(){
-    window.location.href = '/user';
+    window.location.href = '/consultaFlota';
     
 }
 
@@ -139,9 +140,6 @@ export default{
     }
 }
 </script>
-
-
-
 
 <style>
 .general {
@@ -263,3 +261,5 @@ input:focus{
 }
 
 </style>
+
+

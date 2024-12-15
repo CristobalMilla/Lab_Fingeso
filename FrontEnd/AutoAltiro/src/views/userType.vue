@@ -42,10 +42,10 @@
     export default{
         data(){
             return{
-                developer: 0,
-                admin: 0,
-                client: 0,
-                employer: 0,
+                developer: false,
+                admin: false,
+                client: false,
+                employer: false,
             }
         },
         methods:{
@@ -55,7 +55,7 @@
                     "tiposUsuario": this.perfilesDisponibles,
                 };
                 try {
-                    const respuesta = await axios.post
+                    const respuesta = await axios.post;
                 } catch (error) {
                     
                 }

@@ -13,8 +13,13 @@ const router = createRouter({
             path: '/tipoUsuario',
             name: 'tipoUsuario',
             component: () => import('../views/userType.vue'),
-            meta: ,
-        }
+        },
+        {
+            path:'/menuPrincipalAdmin',
+            name: 'menuPrincipalAdmin',
+            component: () => import('../views/menuAdmin'),
+        },
+        
     ],
 });
 
