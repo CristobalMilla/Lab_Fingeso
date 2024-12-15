@@ -1,12 +1,11 @@
 <script setup>
     import styles from '@/components/styles.vue';
-import { defineAsyncComponent } from 'vue';
 </script>
 
 
 <template>
     <main>
-        <div class="general">
+        <div class="general"> 
             <div class="content">
                 <img class="image" src="./media/LogoUsachNegro.png">
                 <div class="header">Seleccione la opcion que desee</div>
@@ -21,13 +20,11 @@ import { defineAsyncComponent } from 'vue';
                     </router-link>
                 </div>
             </div>
-
         </div>
     </main>
 </template>
 
 <script>
-
     //Redireccionamiento
     //Flota
     function redireccionarAPaginaEditarFlota(){
@@ -49,10 +46,6 @@ import { defineAsyncComponent } from 'vue';
     }
     
 </script>
-
-
-
-
 
 <style>
 

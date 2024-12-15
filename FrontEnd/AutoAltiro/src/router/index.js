@@ -17,9 +17,18 @@ const router = createRouter({
         {
             path:'/menuPrincipalAdmin',
             name: 'menuPrincipalAdmin',
-            component: () => import('../views/menuAdmin'),
+            component: () => import('../views/menuAdmin.vue'),
         },
-        
+        {
+            path:'/flota',
+            name: 'flota',
+            component: () => import('../views/flotaPage.vue'),
+        },
+        {
+            path: '/consultaFlota',
+            name: 'consultaFlota',
+            component: () => import('../views/consultaFlota.vue'),
+        }
     ],
 });
 

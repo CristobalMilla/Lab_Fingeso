@@ -38,7 +38,7 @@
 <script>
     import axios from 'axios';
     //Redireccionamientos
-
+    
     export default{
         data(){
             return{

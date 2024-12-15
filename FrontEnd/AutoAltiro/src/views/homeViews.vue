@@ -1,5 +1,4 @@
 <script setup>
-  import styles from '@/components/styles.vue';
 
 </script>
 
@@ -143,9 +142,10 @@ export default{
 
 <style>
 .general {
-    background-image: url("./media/wolvmeme.jpg");
+    background-image: url("./media/spongebob.jpg");
 
     height: 100vh;
+    width: 100wh;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -173,8 +173,8 @@ export default{
     max-width: 500px;
     width: 100%;
     margin: 0px 10px 0px 10px;
-    min-height: 500px;
-    max-height: 550px;
+    min-height: 750px;
+    max-height: 1000px;
     height: 100%;
 
     border-radius: 10px;
