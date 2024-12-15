@@ -8,6 +8,12 @@ const router = createRouter({
             name: 'home',
             component: () => import('../views/homeViews.vue'),
             alias : '/inicio',
+        },
+        {
+            path: '/tipoUsuario',
+            name: 'tipoUsuario',
+            component: () => import('../views/userType.vue'),
+            meta: ,
         }
     ],
 });

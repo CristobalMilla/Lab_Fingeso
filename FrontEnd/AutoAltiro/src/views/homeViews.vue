@@ -20,6 +20,11 @@
                     <input type="email" v-model="usernameRegister" placeholder="Ingrese correo">
                     <input type="password" v-model="passwordRegister" placeholder="Ingrese contraseña">
                     <input type="password" v-model="passwordRegisterConfirmation" placeholder="Ingrese contraseña nuevamente">
+                    <input type="rut" v-model="rutRegister" placeholder="Ingrese rut">
+                    <input type="name" v-model="nameRegister" placeholder="Ingrese su nombre">
+                    <input type="age" v-model="ageRegister" placeholder="Ingrese su edad">
+                    <input type="documentName" v-model="documentNameRegister" placeholder="Ingrese su numero de documento">
+                    <input type="licenceNumber" v-model="licenceNumberRegister" placeholder="Ingrese su numero de licencia de conducir">
                     <button class="sessionButton" @click="addUser">Registrarse</button>
                 </div>
                 <div class="alsoButtons">
@@ -41,13 +46,13 @@ import axios from 'axios'
 
 //Redireccionamiento
 //Usuario
-function redireccionarASubpaginaUsuario(){
-    window.location.href = '/user';
+function redireccionarASubpaginaSeleccionTipoUsuario(){
+    window.location.href = '/tipoUsuario';
 
 }
 //Usuario Anonimo
 function redireccionarASubpaginaUsuarioAnonimo(){
-    window.location.href = '/anonimo';
+    window.location.href = '/user';
     
 }
 
@@ -61,6 +66,11 @@ export default{
             usernameRegister: '',
             passwordRegister: '',
             passwordRegisterConfirmation: '',
+            rutRegister: '',
+            nameRegister:'',
+            ageRegister:'',
+            documentNameRegister:'',
+            licenceNumberRegister:'',
 
         }
     },
@@ -70,21 +80,13 @@ export default{
             const usuario = {
                 "email": this.username,
                 "password": this.password,
-
+                
             };
             try {
                 const respuesta = await axios.post(import.meta.env.VITE_BASE_URL + "api/usuario/login", usuario);
                 if (respuesta.data == 1){
-                    return 0;
-
-                }
-                if(respuesta.data == 2){
-                    return 0;
-
-                }
-                if(respuesta.data == 3){
                     localStorage.setItem('login', JSON.stringify(this.username));
-                    redireccionarASubpaginaUsuario();
+                    redireccionarASubpaginaSeleccionTipoUsuario();
                 }
                 if(respuesta.data == 0){
                     alert("Credenciales Invalidas");
@@ -104,6 +106,35 @@ export default{
             this.username = "anonimo"
             redireccionarASubpaginaUsuarioAnonimo();
             localStorage.setItem("login", JSON.stringify(this.username));
+        },
+        async addUser(){
+            //Envio de datos a BackEnd
+            if(this.passwordRegister == this.passwordRegisterConfirmation){
+                if(this.usernameRegister != "" & this.passwordRegister != "" & this.rutRegister != "" & this.nameRegister != "" & this.ageRegister != "" & this.documentNameRegister != "" & this.licenceNumberRegister != ""){
+                    const nuevo_usuario = {
+                        "email": this.usernameRegister,
+                        "password": this.passwordRegister,
+                        "rut": this.rutRegister,
+                        "name": this.nameRegister,
+                        "age": this.ageRegister,
+                        "documentName": this.documentNameRegister,
+                        "licenseNumber": this.licenceNumberRegister,
+                    }
+                    try {
+                        const registro = await axios.post(import.meta.env.VITE_BASE_URL + "api/usuario/register", nuevo_usuario);
+                        console.log(registro)
+                        alert("Usuario registrado con exito")
+                    } catch (error) {
+                        alert("No se pudo registrar")
+                    }
+                }
+                else{
+                    alert("Faltan datos para ingresar")
+                }
+            }
+            else{
+                alert("Las contraseñas deben coincidir")
+            }
         }
     }
 }
