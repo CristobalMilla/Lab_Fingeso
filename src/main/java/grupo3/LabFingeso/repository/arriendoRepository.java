@@ -1,15 +1,20 @@
 package grupo3.LabFingeso.repository;
 
 import grupo3.LabFingeso.entity.arriendoEntity;
-import grupo3.LabFingeso.entity.usuarioEntity;
-import grupo3.LabFingeso.entity.vehiculoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
 public interface arriendoRepository extends JpaRepository<arriendoEntity, Long> {
-    List<arriendoEntity> findByCliente(usuarioEntity cliente);
-    List<arriendoEntity> findByVehiculo(vehiculoEntity vehiculo);
+    @Query(value = "SELECT * FROM arriendo WHERE cliente = :idcliente AND existearriendo = true", nativeQuery = true)
+    List<arriendoEntity> findByidCliente(long idcliente);
+
+    @Query(value = "SELECT * FROM arriendo WHERE vehiculo = :idvehiculo AND existearriendo = true", nativeQuery = true)
+    List<arriendoEntity> findByVehiculo(long idvehiculo);
+
+    @Query(value = "UPDATE arriendo SET existearriendo = false WHERE idarriendo = :idarriendo AND existearriendo = true", nativeQuery = true)
+    boolean deleteById(long idarriendo);
 }

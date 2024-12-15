@@ -17,7 +17,7 @@ public class vehiculoService {
     }
 
     public vehiculoEntity cambiarDisponibilidad(long idVehiculo, String estado){
-        vehiculoEntity vehiculo = vehiculoRepo.findById(idVehiculo).orElse(null);
+        vehiculoEntity vehiculo = vehiculoRepo.findByIdIfExist(idVehiculo);
         if(vehiculo != null){
             vehiculo.setEstado(estado);
             if(estado.equalsIgnoreCase("disponible")
@@ -40,7 +40,7 @@ public class vehiculoService {
     }
 
     public vehiculoEntity getVehiculoById(long idVehiculo){
-        return vehiculoRepo.findById(idVehiculo).orElse(null);
+        return vehiculoRepo.findByIdIfExist(idVehiculo);
     }
 
     public vehiculoEntity updateVehiculo(vehiculoEntity vehiculoModificado){
@@ -48,11 +48,11 @@ public class vehiculoService {
     }
 
     public List<vehiculoEntity> getAllVehiculos(){
-        return vehiculoRepo.findAll();
+        return vehiculoRepo.findAllThatExists();
     }
 
     public boolean eliminateVehiculoById(long idVehiculo){
-        if(vehiculoRepo.findById(idVehiculo).orElse(null) != null){
+        if(vehiculoRepo.findByIdIfExist(idVehiculo) != null){
             try {
                 vehiculoRepo.deleteById(idVehiculo);
                 return true;

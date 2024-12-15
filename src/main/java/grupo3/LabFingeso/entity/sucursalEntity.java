@@ -1,9 +1,8 @@
 package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "sucursal")
@@ -11,18 +10,15 @@ public class sucursalEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long idSucursal;
+    private long idsucursal;
     private String nombre;
     private String direccion;
-    @OneToMany(targetEntity = vehiculoEntity.class)
-    private Set<vehiculoEntity> vehiculos;
 
     // Constructor
-    public sucursalEntity(String nombre, long idSucursal, String direccion, Set<vehiculoEntity> vehiculos) {
+    public sucursalEntity(String nombre, long idsucursal, String direccion) {
         this.nombre = nombre;
-        this.idSucursal = idSucursal;
+        this.idsucursal = idsucursal;
         this.direccion = direccion;
-        this.vehiculos = vehiculos;
     }
 
     public sucursalEntity(){
@@ -30,9 +26,6 @@ public class sucursalEntity {
     }
 
     // Getters
-    public Set<vehiculoEntity> getVehiculos() {
-        return vehiculos;
-    }
 
     public String getDireccion() {
         return direccion;
@@ -43,13 +36,13 @@ public class sucursalEntity {
     }
 
     public long getIdSucursal() {
-        return idSucursal;
+        return idsucursal;
     }
 
     // Setters
 
-    public void setIdSucursal(long idSucursal) {
-        this.idSucursal = idSucursal;
+    public void setIdSucursal(long idsucursal) {
+        this.idsucursal = idsucursal;
     }
 
     public void setNombre(String nombre) {
@@ -58,9 +51,5 @@ public class sucursalEntity {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public void setVehiculos(Set<vehiculoEntity> vehiculos) {
-        this.vehiculos = vehiculos;
     }
 }

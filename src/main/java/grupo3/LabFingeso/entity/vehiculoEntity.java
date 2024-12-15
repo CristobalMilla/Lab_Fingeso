@@ -8,34 +8,38 @@ public class vehiculoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long idVehiculo;
+    private long idvehiculo;
     private String marca;
     private String modelo;
     private String tipo;
     private String matricula;
     private int kilometraje;
     private String estado;
-    private double precioBase;
+    private double preciobase;
     private char categoria;
     private String carroceria;
     private char transmision;
-    private String fotoVehiculo;
+    private String fotovehiculo;
+    @ManyToOne
+    @JoinColumn(name = "idsucursal")
+    private sucursalEntity sucursal;
 
     // Constructor
-    public vehiculoEntity(long idVehiculo, String marca, String modelo, String matricula, String tipo, int kilometraje,
-                          String estado, double precioBase, char categoria, String carroceria, char transmision, String fotoVehiculo) {
-        this.idVehiculo = idVehiculo;
+    public vehiculoEntity(long idvehiculo, String marca, String modelo, String matricula, String tipo, int kilometraje, String estado,
+                          double preciobase, char categoria, String carroceria, char transmision, String fotovehiculo, sucursalEntity sucursal) {
+        this.idvehiculo = idvehiculo;
         this.marca = marca;
         this.modelo = modelo;
         this.matricula = matricula;
         this.tipo = tipo;
         this.kilometraje = kilometraje;
         this.estado = estado;
-        this.precioBase = precioBase;
+        this.preciobase = preciobase;
         this.categoria = categoria;
         this.carroceria = carroceria;
         this.transmision = transmision;
-        this.fotoVehiculo = fotoVehiculo;
+        this.fotovehiculo = fotovehiculo;
+        this.sucursal = sucursal;
     }
 
     public vehiculoEntity(){
@@ -43,7 +47,7 @@ public class vehiculoEntity {
 
     // Getters
     public long getidVehiculo() {
-        return idVehiculo;
+        return idvehiculo;
     }
 
     public String getMarca() {
@@ -71,7 +75,7 @@ public class vehiculoEntity {
     }
 
     public double getPrecioBase() {
-        return precioBase;
+        return preciobase;
     }
 
     public String getCarroceria() {
@@ -87,7 +91,11 @@ public class vehiculoEntity {
     }
 
     public String getfotoVehiculo() {
-        return fotoVehiculo;
+        return fotovehiculo;
+    }
+
+    public sucursalEntity getSucursal() {
+        return sucursal;
     }
 
     // Setters
@@ -95,8 +103,8 @@ public class vehiculoEntity {
         this.marca = marca;
     }
 
-    public void setIdUsuario(long idVehiculo) {
-        this.idVehiculo = idVehiculo;
+    public void setIdUsuario(long idvehiculo) {
+        this.idvehiculo = idvehiculo;
     }
 
     public void setModelo(String modelo) {
@@ -119,8 +127,8 @@ public class vehiculoEntity {
         this.estado = estado;
     }
 
-    public void setPrecioBase(double precioBase) {
-        this.precioBase = precioBase;
+    public void setPrecioBase(double preciobase) {
+        this.preciobase = preciobase;
     }
 
     public void setCarroceria(String carroceria) {
@@ -135,7 +143,11 @@ public class vehiculoEntity {
         this.transmision = transmision;
     }
 
-    public void setFotoVehiculo(String fotoVehiculo) {
-        this.fotoVehiculo = fotoVehiculo;
+    public void setFotoVehiculo(String fotovehiculo) {
+        this.fotovehiculo = fotovehiculo;
+    }
+
+    public void setSucursal(sucursalEntity sucursal) {
+        this.sucursal = sucursal;
     }
 }

@@ -2,7 +2,7 @@ package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "arriendo")
@@ -10,40 +10,38 @@ public class arriendoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long idArriendo;
-    private Date fechaInicio;
-    private Date fechaFin;
-    private double costoTotal;
-    /* en uso
-     * retraso
-     * terminado
-     * retirar   */
+    private long idarriendo;
+    private Date fechainicio;
+    private Date fechafin;
+    private double costototal;
     private String estado;
     @OneToOne
+    @JoinColumn(name = "cliente")
     private usuarioEntity cliente;
     @OneToOne
+    @JoinColumn(name = "vehiculo")
     private vehiculoEntity vehiculo;
     @OneToOne
-    private sucursalEntity sucursalRecogida;
+    @JoinColumn(name = "sucursalrecogida")
+    private sucursalEntity sucursalrecogida;
     @OneToOne
-    private sucursalEntity sucursalDevolucion = null; // De primera no se sabe donde se devuelve(?
+    @JoinColumn(name = "sucursaldevolucion")
+    private sucursalEntity sucursaldevolucion = null; // De primera no se sabe donde se devuelve(?
     @OneToOne
-    private pagoEntity Pago;
-    @OneToOne
+    @JoinColumn(name = "comprobante")
     private comprobanteEntity comprobante;
 
     // Constructor
-    public arriendoEntity(long idArriendo, Date fechaInicio, Date fechaFin, double costoTotal, String estado, usuarioEntity cliente,
-                          vehiculoEntity vehiculo, sucursalEntity sucursalRecogida, pagoEntity pago, comprobanteEntity comprobante){
-        this.idArriendo = idArriendo;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.costoTotal = costoTotal;
+    public arriendoEntity(long idarriendo, Date fechainicio, Date fechafin, double costototal, String estado, usuarioEntity cliente,
+                          vehiculoEntity vehiculo, sucursalEntity sucursalrecogida, comprobanteEntity comprobante){
+        this.idarriendo = idarriendo;
+        this.fechainicio = fechainicio;
+        this.fechafin = fechafin;
+        this.costototal = costototal;
         this.estado = estado;
         this.cliente = cliente;
         this.vehiculo = vehiculo;
-        this.sucursalRecogida = sucursalRecogida;
-        this.Pago = pago;
+        this.sucursalrecogida = sucursalrecogida;
         this.comprobante = comprobante;
     }
 
@@ -53,19 +51,19 @@ public class arriendoEntity {
 
     // Getters
     public long getIdArriendo() {
-        return idArriendo;
+        return idarriendo;
     }
 
     public Date getFechaInicio() {
-        return fechaInicio;
+        return fechainicio;
     }
 
     public double getCostoTotal() {
-        return costoTotal;
+        return costototal;
     }
 
     public Date getFechaFin() {
-        return fechaFin;
+        return fechafin;
     }
 
     public String getEstado() {
@@ -81,15 +79,11 @@ public class arriendoEntity {
     }
 
     public sucursalEntity getSucursalRecogida() {
-        return sucursalRecogida;
+        return sucursalrecogida;
     }
 
     public sucursalEntity getSucursalDevolucion() {
-        return sucursalDevolucion;
-    }
-
-    public pagoEntity getPago() {
-        return Pago;
+        return sucursaldevolucion;
     }
 
     public comprobanteEntity getComprobante() {
@@ -98,20 +92,20 @@ public class arriendoEntity {
 
     // Setters
 
-    public void setIdArriendo(long idArriendo) {
-        this.idArriendo = idArriendo;
+    public void setIdArriendo(long idarriendo) {
+        this.idarriendo = idarriendo;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setFechaInicio(Date fechainicio) {
+        this.fechainicio = fechainicio;
     }
 
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setFechaFin(Date fechafin) {
+        this.fechafin = fechafin;
     }
 
-    public void setCostoTotal(double costoTotal) {
-        this.costoTotal = costoTotal;
+    public void setCostoTotal(double costototal) {
+        this.costototal = costototal;
     }
 
     public void setEstado(String estado) {
@@ -126,16 +120,12 @@ public class arriendoEntity {
         this.vehiculo = vehiculo;
     }
 
-    public void setSucursalRecogida(sucursalEntity sucursalRecogida) {
-        this.sucursalRecogida = sucursalRecogida;
+    public void setSucursalRecogida(sucursalEntity sucursalrecogida) {
+        this.sucursalrecogida = sucursalrecogida;
     }
 
-    public void setSucursalDevolucion(sucursalEntity sucursalDevolucion) {
-        this.sucursalDevolucion = sucursalDevolucion;
-    }
-
-    public void setPago(pagoEntity pago) {
-        this.Pago = pago;
+    public void setSucursalDevolucion(sucursalEntity sucursaldevolucion) {
+        this.sucursaldevolucion = sucursaldevolucion;
     }
 
     public void setComprobante(comprobanteEntity comprobante) {
