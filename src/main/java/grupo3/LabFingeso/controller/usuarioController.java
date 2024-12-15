@@ -25,22 +25,22 @@ public class usuarioController {
         );
     }
 
-    @PostMapping("/login/")
+    @PutMapping("/login/")
     public int login(@RequestBody usuarioEntity x){
         return usuarioService.login(x.getCorreo(), x.getContrasena());
     }
 
-    @PostMapping("/elegirPerfil/")
+    @PutMapping("/elegirPerfil/")
     public void elegirPerfil(@RequestBody usuarioEntity x, @RequestParam String perfilNuevo){
         usuarioService.elegirPerfil(x.getCorreo(), perfilNuevo);
     }
 
-    @PostMapping("/cambiarPerfil/")
+    @PutMapping("/cambiarPerfil/")
     public void cambiarPerfil(@RequestBody usuarioEntity nuevo, @RequestParam String perfilNuevo){
         usuarioService.cambiarPerfil(nuevo.getCorreo(), perfilNuevo);
     }
 
-    @PostMapping("/obtenerUsuario/{correoUsuario}/")
+    @GetMapping("/obtenerUsuario/{correoUsuario}/")
     public usuarioEntity getUsuarioByName(@PathVariable String correoUsuario){
         return usuarioService.getUsuarioByCorreo(correoUsuario);
     }
