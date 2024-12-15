@@ -10,44 +10,44 @@ import java.util.List;
 public class usuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idUsuario;
+    private long idusuario;
     private int rut;
     private String nombre;
     private int edad;
     private String correo;
     private String carnet;
-    private String licenciaConducir;
+    private String licenciaconducir;
     private String contrasena;
-    private String perfilActual;
+    private String perfilactual;
 
     @ElementCollection
     @CollectionTable(name = "usuario_perfiles", joinColumns = @JoinColumn(name = "idUsuario"))
     @Column(name = "perfil")
-    private List<String> perfilesDisponibles;
+    private List<String> perfilesdisponibles;
 
 
-    public usuarioEntity(int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
+    public usuarioEntity(int rut, String nombre, int edad, String correo, String carnet, String licenciaconducir, String contrasena) {
         this.rut = rut;
         this.nombre = nombre;
         this.edad = edad;
         this.correo = correo;
         this.carnet = carnet;
-        this.licenciaConducir = licenciaConducir;
+        this.licenciaconducir = licenciaconducir;
         this.contrasena = contrasena;
-        this.perfilActual = null;
-        this.perfilesDisponibles = new ArrayList<>();
-        this.perfilesDisponibles.add("usuario");
+        this.perfilactual = null;
+        this.perfilesdisponibles = new ArrayList<>();
+        this.perfilesdisponibles.add("usuario");
     }
 
     public usuarioEntity() {
     }
 
     public long getIdUsuario() {
-        return idUsuario;
+        return idusuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuario(long idusuario) {
+        this.idusuario = idusuario;
     }
 
     public int getRut() {
@@ -91,11 +91,11 @@ public class usuarioEntity {
     }
 
     public String getLicenciaConducir() {
-        return licenciaConducir;
+        return licenciaconducir;
     }
 
-    public void setLicenciaConducir(String licenciaConducir) {
-        this.licenciaConducir = licenciaConducir;
+    public void setLicenciaConducir(String licenciaconducir) {
+        this.licenciaconducir = licenciaconducir;
     }
 
     public String getContrasena() {
@@ -107,20 +107,20 @@ public class usuarioEntity {
     }
 
     public String getPerfilActual() {
-        return perfilActual;
+        return perfilactual;
     }
 
-    public void setPerfilActual(String perfilActual) {
-        this.perfilActual = perfilActual;
+    public void setPerfilActual(String perfilactual) {
+        this.perfilactual = perfilactual;
     }
 
 
     public List<String> getPerfilesDisponibles() {
-        return perfilesDisponibles;
+        return perfilesdisponibles;
     }
 
-    public void setPerfilesDisponibles(List<String> perfilesDisponibles) {
-        this.perfilesDisponibles = perfilesDisponibles;
+    public void setPerfilesDisponibles(List<String> perfilesdisponibles) {
+        this.perfilesdisponibles = perfilesdisponibles;
     }
 }
 
