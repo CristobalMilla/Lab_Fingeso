@@ -82,8 +82,8 @@ export default{
 
             //Envio de datos a backend
             const usuario = {
-                "email": this.username,
-                "password": this.password,
+                "correo": this.username,
+                "contrasena": this.password,
                 
             };
             try {
@@ -116,13 +116,13 @@ export default{
             if(this.passwordRegister == this.passwordRegisterConfirmation){
                 if(this.usernameRegister != "" & this.passwordRegister != "" & this.rutRegister != "" & this.nameRegister != "" & this.ageRegister != "" & this.documentNameRegister != "" & this.licenceNumberRegister != ""){
                     const nuevo_usuario = {
-                        "email": this.usernameRegister,
-                        "password": this.passwordRegister,
+                        "correo": this.usernameRegister,
+                        "contrasena": this.passwordRegister,
                         "rut": this.rutRegister,
-                        "name": this.nameRegister,
-                        "age": this.ageRegister,
-                        "documentName": this.documentNameRegister,
-                        "licenseNumber": this.licenceNumberRegister,
+                        "nombre": this.nameRegister,
+                        "edad": this.ageRegister,
+                        "carnet": this.documentNameRegister,
+                        "licenciaconducir": this.licenceNumberRegister,
                     }
                     try {
                         const registro = await axios.post(import.meta.env.VITE_BASE_URL + "api/usuario/register", nuevo_usuario);
