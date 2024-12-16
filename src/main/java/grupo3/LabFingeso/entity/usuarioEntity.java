@@ -22,7 +22,7 @@ public class usuarioEntity {
     private String perfilactual;
 
     @ElementCollection
-    @CollectionTable(name = "usuario_perfiles", joinColumns = @JoinColumn(name = "idusuario"))
+    @CollectionTable(name = "perfilesdisponibles", joinColumns = @JoinColumn(name = "idusuario"))
     @Column(name = "perfil")
     private List<String> perfilesdisponibles;
 
@@ -43,84 +43,83 @@ public class usuarioEntity {
     public usuarioEntity() {
     }
 
-    public long getIdUsuario() {
+    public long getIdusuario() {
         return idusuario;
-    }
-
-    public void setIdUsuario(long idusuario) {
-        this.idusuario = idusuario;
     }
 
     public int getRut() {
         return rut;
     }
 
-    public void setRut(int rut) {
-        this.rut = rut;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
     public String getCorreo() {
         return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
     }
 
     public String getCarnet() {
         return carnet;
     }
 
-    public void setCarnet(String carnet) {
-        this.carnet = carnet;
-    }
-
-    public String getLicenciaConducir() {
+    public String getLicenciaconducir() {
         return licenciaconducir;
     }
 
-    public void setLicenciaConducir(String licenciaconducir) {
-        this.licenciaconducir = licenciaconducir;
+    public String getPerfilactual() {
+        return perfilactual;
     }
 
     public String getContrasena() {
         return contrasena;
     }
 
+    public List<String> getPerfilesdisponibles() {
+        return perfilesdisponibles;
+    }
+
+    public void setIdusuario(long idusuario) {
+        this.idusuario = idusuario;
+    }
+
+    public void setRut(int rut) {
+        this.rut = rut;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public void setCarnet(String carnet) {
+        this.carnet = carnet;
+    }
+
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 
-    public String getPerfilActual() {
-        return perfilactual;
+    public void setLicenciaconducir(String licenciaconducir) {
+        this.licenciaconducir = licenciaconducir;
     }
 
-    public void setPerfilActual(String perfilactual) {
+    public void setPerfilactual(String perfilactual) {
         this.perfilactual = perfilactual;
     }
 
-
-    public List<String> getPerfilesDisponibles() {
-        return perfilesdisponibles;
-    }
-
-    public void setPerfilesDisponibles(List<String> perfilesdisponibles) {
+    public void setPerfilesdisponibles(List<String> perfilesdisponibles) {
         this.perfilesdisponibles = perfilesdisponibles;
     }
 }

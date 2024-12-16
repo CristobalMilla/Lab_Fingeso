@@ -22,7 +22,7 @@ public class usuarioController {
     public usuarioEntity registro(@RequestBody usuarioEntity nuevoUsuario) {
         return usuarioService.registro(nuevoUsuario.getRut(), nuevoUsuario.getNombre(),
                 nuevoUsuario.getEdad(), nuevoUsuario.getCorreo(), nuevoUsuario.getCarnet(),
-                nuevoUsuario.getLicenciaConducir(), nuevoUsuario.getContrasena()
+                nuevoUsuario.getLicenciaconducir(), nuevoUsuario.getContrasena()
         );
     }
 
@@ -33,12 +33,12 @@ public class usuarioController {
 
     @PutMapping("/elegirPerfil/")
     public void elegirPerfil(@RequestBody usuarioEntity x){
-        usuarioService.elegirPerfil(x.getCorreo(), x.getPerfilActual());
+        usuarioService.elegirPerfil(x.getCorreo(), x.getPerfilactual());
     }
 
     @PostMapping("/cambiarPerfil/")
     public void cambiarPerfil(@RequestBody usuarioEntity nuevo){
-        usuarioService.cambiarPerfil(nuevo.getCorreo(), nuevo.getPerfilActual());
+        usuarioService.cambiarPerfil(nuevo.getCorreo(), nuevo.getPerfilactual());
     }
 
     @PostMapping("/obtenerUsuario/{correoUsuario}/")
@@ -77,12 +77,12 @@ public class usuarioController {
 
     @PutMapping("/actualizarUsuarioBy")
     public usuarioEntity updateUsuario(@RequestBody usuarioEntity usuarioModificado){
-        return usuarioService.updateUsuario(usuarioModificado.getCorreo(), usuarioModificado.getPerfilActual());
+        return usuarioService.updateUsuario(usuarioModificado.getCorreo(), usuarioModificado.getPerfilactual());
     }
 
     @PutMapping("/actualizarUsuario2")
     public void updateUsuario2(@RequestBody usuarioEntity usuarioModificado) {
-        usuarioService.updateUsuario2(usuarioModificado.getCorreo(), usuarioModificado.getPerfilActual());
+        usuarioService.updateUsuario2(usuarioModificado.getCorreo(), usuarioModificado.getPerfilactual());
     }
 
     @DeleteMapping("/eliminarUsuario;")

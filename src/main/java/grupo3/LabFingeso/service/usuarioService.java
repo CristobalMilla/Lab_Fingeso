@@ -40,7 +40,7 @@ public class usuarioService {
             return 0;
         }
         if (usuarioActual.getContrasena().equals(contrasena)) {
-            if (usuarioActual.getPerfilActual() == null || usuarioActual.getPerfilActual().isEmpty()) {
+            if (usuarioActual.getPerfilactual() == null || usuarioActual.getPerfilactual().isEmpty()) {
                 return 1;
             } else {
                 return 0;
@@ -58,8 +58,8 @@ public class usuarioService {
         try{
             if(cambioPerfil.equals("desarrollador") || cambioPerfil.equals("administrador") || cambioPerfil.equals("empleado") || cambioPerfil.equals("cliente") || cambioPerfil.equals("usuario")){
                 try {
-                    if (usuario.getPerfilesDisponibles().contains(cambioPerfil)) {
-                        usuario.setPerfilActual(cambioPerfil);
+                    if (usuario.getPerfilesdisponibles().contains(cambioPerfil)) {
+                        usuario.setPerfilactual(cambioPerfil);
                         usuarioRepo.save(usuario);
                     }
                 } catch (Exception e) {
@@ -78,8 +78,8 @@ public class usuarioService {
             if(cambioPerfil.equals("cliente") || cambioPerfil.equals("administrador") || cambioPerfil.equals("empleado")|| cambioPerfil.equals("desarrollador") || cambioPerfil.equals("usuario"))
             {
                 try {
-                    if (usuario.getPerfilesDisponibles().contains(cambioPerfil)) {
-                        usuario.setPerfilActual(cambioPerfil);
+                    if (usuario.getPerfilesdisponibles().contains(cambioPerfil)) {
+                        usuario.setPerfilactual(cambioPerfil);
                         usuarioRepo.save(usuario);
                     }
                 } catch (Exception e) {
@@ -98,10 +98,10 @@ public class usuarioService {
         try{
             if(agregarPerfil.equals("Cliente") || agregarPerfil.equals("Administrador") || agregarPerfil.equals("Empleado")|| agregarPerfil.equals("Desarrollador")){
                 try {
-                    if (usuarioActual.getPerfilActual().equals("Administrador") || usuarioActual.getPerfilActual().equals("Desarrollador")) {
+                    if (usuarioActual.getPerfilactual().equals("Administrador") || usuarioActual.getPerfilactual().equals("Desarrollador")) {
                         try {
-                            if (!usuario.getPerfilesDisponibles().contains(agregarPerfil)) {
-                                usuario.getPerfilesDisponibles().add(agregarPerfil);
+                            if (!usuario.getPerfilesdisponibles().contains(agregarPerfil)) {
+                                usuario.getPerfilesdisponibles().add(agregarPerfil);
                                 usuarioRepo.save(usuario);
                             }
                         } catch (Exception e) {
@@ -132,13 +132,13 @@ public class usuarioService {
 
     public usuarioEntity updateUsuario(String correo, String perfilNuevo) {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
-        usuario.setPerfilActual(perfilNuevo);
+        usuario.setPerfilactual(perfilNuevo);
         return usuarioRepo.save(usuario);
     }
 
     public void updateUsuario2(String correo, String perfilNuevo) {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
-        usuario.setPerfilActual(perfilNuevo);
+        usuario.setPerfilactual(perfilNuevo);
         usuarioRepo.save(usuario);
     }
 
