@@ -47,7 +47,7 @@ import axios from 'axios'
 //Usuario
 function redireccionarASubpaginaSeleccionTipoUsuario(){
     //CAMBIAR POR /tipoUsuario cuando se pueda
-    window.location.href = '/menuPrincipalAdmin';
+    window.location.href = '/admin';
 
 }
 //Usuario Anonimo
@@ -76,6 +76,10 @@ export default{
     },
     methods:{
         async login(){
+            //DEBUGGEO
+            redireccionarASubpaginaSeleccionTipoUsuario();
+            //DEBUGGEUO
+
             //Envio de datos a backend
             const usuario = {
                 "email": this.username,
