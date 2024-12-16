@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import homeView from '../views/homeViews.vue';
+import menuAdmin from '../views/menuAdmin.vue';
 import AdminHome from '../views/AdminHome.vue';
 import CustomerHome from '../views/CustomerHome.vue';
 import AddCar from '../views/AddCar.vue';
@@ -24,8 +25,8 @@ const router = createRouter({
             component: () => import('../views/userType.vue'),
         },
         {
-            path:'/menuPrincipalAdmin',
-            name: 'menuPrincipalAdmin',
+            path:'/menuAdmin',
+            name: 'menuAdmin',
             component: () => import('../views/menuAdmin.vue'),
         },
         /*{

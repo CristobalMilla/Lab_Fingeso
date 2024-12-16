@@ -19,5 +19,13 @@
   <script>
   export default {
     name: 'AddCar',
+   // return{
+
+  //  },
+    methods:{
+      async agregarVehiculo(){
+
+      }
+    }
   };
   </script>

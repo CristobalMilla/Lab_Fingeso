@@ -47,7 +47,7 @@ import axios from 'axios'
 //Usuario
 function redireccionarASubpaginaSeleccionTipoUsuario(){
     //CAMBIAR POR /tipoUsuario cuando se pueda
-    window.location.href = '/admin';
+    window.location.href = '/menuAdmin';
 
 }
 //Usuario Anonimo
@@ -78,7 +78,7 @@ export default{
         async login(){
             //DEBUGGEO
             redireccionarASubpaginaSeleccionTipoUsuario();
-            //DEBUGGEUO
+            //DEBUGGEO
 
             //Envio de datos a backend
             const usuario = {
@@ -140,129 +140,12 @@ export default{
                 alert("Las contraseñas deben coincidir")
             }
         }
-    }
+    },
 }
 </script>
 
 <style>
-.general {
-    background-image: url("./media/spongebob.jpg");
 
-    height: 100vh;
-    width: 100wh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    
-}
-
-.image{
-    height: 150px;
-}
-
-.content{
-    box-sizing: border-box;
-    padding: 10px;
-    background-color: #f8f6f6f3;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    min-width: 300px;
-    max-width: 500px;
-    width: 100%;
-    margin: 0px 10px 0px 10px;
-    min-height: 750px;
-    max-height: 1000px;
-    height: 100%;
-
-    border-radius: 10px;
-}
-
-.header {
-    text-align: center;
-    line-height: 1;
-    font-size: 40px;
-    font-weight: 500 !important;
-    color: black;
-}
-
-.headerDescription{
-    font-size: 16px;
-    margin-bottom: 20px;
-    color: black;
-}
-
-.inputContainers {
-    display: flex;
-    gap: 1px;
-    width: 100%;
-    max-width: 400px;
-    flex-direction: column;
-}
-
-input{
-    height: 50px;
-    box-sizing: border-box;
-
-    padding: 10px !important;
-    font-size: 16px;
-    border-radius: 4px;
-    outline: none;
-    border: #cdcdcd solid 3px;
-    transition: border 0.2s;
-}
-
-input:hover{
-    border: #bbbbbb solid 3px;
-    transition: border 0.2s;
-}
-
-input:focus{
-    border: #888888 solid 3px;
-    transition: border 0.2s;
-}
-
-.sessionButton{
-    height: 50px;
-    background-color: #1769aa;
-    color: #f5f5f5;
-    font-size: 16px;
-    font-weight: 500;
-    border: #1769aa solid 2px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-bottom: 10px;
-}
-
-.sessionButton:hover{
-    background-color: #1f81d1;
-    transition: background-color 0.2s;
-}
-
-.alsoButton{
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s;
-    color: black;
-}
-
-.alsoButton:hover{
-    text-decoration: underline;
-    transition: all 0.2s;
-}
-
-@media (min-width: 418px){
-    .content{
-        max-height: 500px;
-    }
-}
 
 </style>
 
