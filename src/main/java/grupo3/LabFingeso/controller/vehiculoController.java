@@ -20,7 +20,7 @@ public class vehiculoController {
     }
 
     @PostMapping("/crearVehiculo")
-    public vehiculoEntity crearVehiculo(@RequestBody vehiculoEntity nuevoVehiculo) {
+    public int crearVehiculo(@RequestBody vehiculoEntity nuevoVehiculo) {
         return serviceVehiculo.createVehiculo(nuevoVehiculo);
     }
 
@@ -35,7 +35,7 @@ public class vehiculoController {
     }
 
     @PutMapping("/actualizarVehiculo/{idVehiculo}")
-    public vehiculoEntity updateVehiculo(@PathVariable long idVehiculo, @RequestBody vehiculoEntity vehiculoModificado){
+    public int updateVehiculo(@PathVariable long idVehiculo, @RequestBody vehiculoEntity vehiculoModificado){
         return serviceVehiculo.updateVehiculo(idVehiculo, vehiculoModificado);
     }
 

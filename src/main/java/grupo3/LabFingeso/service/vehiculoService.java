@@ -33,14 +33,15 @@ public class vehiculoService {
         return null;
     }
 
-    public vehiculoEntity createVehiculo(vehiculoEntity nuevoVehiculo){
+    public int createVehiculo(vehiculoEntity nuevoVehiculo){
         vehiculoEntity existenteVehiculo = vehiculoRepo.findById(nuevoVehiculo.getIdvehiculo()).orElse(null);
         if(existenteVehiculo != null){
-            return null;
+            return 0;
         }
         else{
             nuevoVehiculo.setSucursal(sucursalRepo.findByIdIfExist(nuevoVehiculo.getSucursal().getIdsucursal()));
-            return vehiculoRepo.save(nuevoVehiculo);
+            vehiculoRepo.save(nuevoVehiculo);
+            return 1;
         }
     }
 
@@ -48,10 +49,10 @@ public class vehiculoService {
         return vehiculoRepo.findByIdIfExist(idVehiculo);
     }
 
-    public vehiculoEntity updateVehiculo(long idVehiculoBase, vehiculoEntity vehiculoModificado){
+    public int updateVehiculo(long idVehiculoBase, vehiculoEntity vehiculoModificado){
         vehiculoEntity vehiculoBase = vehiculoRepo.findByIdIfExist(idVehiculoBase);
         if(vehiculoBase == null){
-            return null;
+            return 0;
         }
         else{
             if (vehiculoModificado.getModelo() != null) {
@@ -87,7 +88,8 @@ public class vehiculoService {
             if (vehiculoModificado.getSucursal() != null) {
                 vehiculoBase.setSucursal(vehiculoModificado.getSucursal());
             }
-            return vehiculoRepo.save(vehiculoBase);
+            vehiculoRepo.save(vehiculoBase);
+            return 1;
         }
     }
 
