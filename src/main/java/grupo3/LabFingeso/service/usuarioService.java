@@ -58,10 +58,6 @@ public class usuarioService {
         try{
             if(cambioPerfil.equals("desarrollador") || cambioPerfil.equals("administrador") || cambioPerfil.equals("empleado") || cambioPerfil.equals("cliente") || cambioPerfil.equals("usuario")){
                 try {
-                    System.out.println("Los perfiles disponibles del usuario son: ");
-                    for(String perfil : usuario.getPerfilesDisponibles()) {
-                        System.out.println("Perfil" + perfil);
-                    }
                     if (usuario.getPerfilesDisponibles().contains(cambioPerfil)) {
                         usuario.setPerfilActual(cambioPerfil);
                         usuarioRepo.save(usuario);
@@ -82,10 +78,6 @@ public class usuarioService {
             if(cambioPerfil.equals("cliente") || cambioPerfil.equals("administrador") || cambioPerfil.equals("empleado")|| cambioPerfil.equals("desarrollador") || cambioPerfil.equals("usuario"))
             {
                 try {
-                    System.out.println("Los perfiles disponibles del usuario son: ");
-                    for(String perfil : usuario.getPerfilesDisponibles()) {
-                        System.out.println("Perfil" + perfil);
-                    }
                     if (usuario.getPerfilesDisponibles().contains(cambioPerfil)) {
                         usuario.setPerfilActual(cambioPerfil);
                         usuarioRepo.save(usuario);
@@ -104,9 +96,9 @@ public class usuarioService {
         usuarioEntity usuarioActual = usuarioRepo.findByCorreo(correoHabilitador);
 
         try{
-            if(agregarPerfil.equals("cliente") || agregarPerfil.equals("administrador") || agregarPerfil.equals("empleado")|| agregarPerfil.equals("desarrollador")){
+            if(agregarPerfil.equals("Cliente") || agregarPerfil.equals("Administrador") || agregarPerfil.equals("Empleado")|| agregarPerfil.equals("Desarrollador")){
                 try {
-                    if (usuarioActual.getPerfilActual().equals("administrador") || usuarioActual.getPerfilActual().equals("desarrollador")) {
+                    if (usuarioActual.getPerfilActual().equals("Administrador") || usuarioActual.getPerfilActual().equals("Desarrollador")) {
                         try {
                             if (!usuario.getPerfilesDisponibles().contains(agregarPerfil)) {
                                 usuario.getPerfilesDisponibles().add(agregarPerfil);
@@ -138,9 +130,18 @@ public class usuarioService {
     }
 
 
-    public usuarioEntity updateUsuario(usuarioEntity usuario) {
+    public usuarioEntity updateUsuario(String correo, String perfilNuevo) {
+        usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
+        usuario.setPerfilActual(perfilNuevo);
         return usuarioRepo.save(usuario);
     }
+
+    public void updateUsuario2(String correo, String perfilNuevo) {
+        usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
+        usuario.setPerfilActual(perfilNuevo);
+        usuarioRepo.save(usuario);
+    }
+
 
 
     public void deleteUsuarioById(long idUsuario) {

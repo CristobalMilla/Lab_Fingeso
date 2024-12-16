@@ -14,6 +14,7 @@ public class usuarioEntity {
     private int rut;
     private String nombre;
     private int edad;
+    @Column(nullable = false, unique = true)
     private String correo;
     private String carnet;
     private String licenciaconducir;
@@ -21,7 +22,7 @@ public class usuarioEntity {
     private String perfilactual;
 
     @ElementCollection
-    @CollectionTable(name = "usuario_perfiles", joinColumns = @JoinColumn(name = "idUsuario"))
+    @CollectionTable(name = "usuario_perfiles", joinColumns = @JoinColumn(name = "idusuario"))
     @Column(name = "perfil")
     private List<String> perfilesdisponibles;
 
