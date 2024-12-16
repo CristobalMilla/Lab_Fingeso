@@ -2,6 +2,8 @@ package grupo3.LabFingeso.entity;
 
 import java.util.Date;
 //import grupo3.LabFingeso.entity.arriendoEntity;
+//import com.fasterxml.jackson.annotation.JsonBackReference;
+//import com.fasterxml.jackson.annotation.JsonManagedReference;
 import grupo3.LabFingeso.entity.pagoEntity;
 import jakarta.persistence.*;
 
