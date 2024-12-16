@@ -87,7 +87,7 @@ export default{
                 
             };
             try {
-                const respuesta = await axios.post(import.meta.env.VITE_BASE_URL + "api/usuario/login", usuario);
+                const respuesta = await axios.put(import.meta.env.VITE_BASE_URL + "api/usuario/login/", usuario);
                 if (respuesta.data == 1){
                     localStorage.setItem('login', JSON.stringify(this.username));
                     redireccionarASubpaginaSeleccionTipoUsuario();
@@ -140,7 +140,7 @@ export default{
                 alert("Las contraseñas deben coincidir")
             }
         }
-    },
+    }
 }
 </script>
 

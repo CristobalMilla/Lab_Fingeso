@@ -9,6 +9,7 @@ import CarStatusSearch from '../views/CarStatusSearch.vue';
 import AdvancedSearch from '../views/AdvancedSearch.vue';
 import Reserve from '../views/Reserve.vue';
 import Vehicles from '../views/Vehicles.vue';
+import ModifyCar from "@/views/modifyCar.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,6 +44,7 @@ const router = createRouter({
         { path: '/admin', name: 'adminHome', component: AdminHome },
         { path: '/customer', name: 'customerHome', component: CustomerHome },
         { path: '/add-car', name: 'addCar', component: AddCar },
+        { path: '/modifyCar', name: 'modifyCar', component: ModifyCar},
         { path: '/car-status', name: 'carStatusSearch', component: CarStatusSearch },
         { path: '/advanced-search', name: 'advancedSearch', component: AdvancedSearch },
         { path: '/reserve', name: 'reserve', component: Reserve },

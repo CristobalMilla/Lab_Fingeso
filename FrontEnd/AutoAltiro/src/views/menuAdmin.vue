@@ -42,8 +42,8 @@
         window.location.href = '/add-car';
     }
     //Edit Car
-    function redireccionarAPaginaEditCar(){
-        window.location.href = '/editCar';
+    function redireccionarAPaginaModifyCar(){
+        window.location.href = '/modifyCar';
     }
     //Erase Car
     function redireccionarAPaginaEraseCar(){
@@ -65,7 +65,7 @@
                 redireccionarAPaginaAddCar();
             },
             editCar(){
-                redireccionarAPaginaEditCar();
+                redireccionarAPaginaModifyCar();
             },
             eraseCar(){
                 redireccionarAPaginaEraseCar();
@@ -77,7 +77,7 @@
                 this.changeFlota = !this.changeFlota
                 console.log(this.register)
             }
-        },
+        }
     }
     
 </script>
