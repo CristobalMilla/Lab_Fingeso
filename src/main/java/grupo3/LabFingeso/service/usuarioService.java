@@ -54,11 +54,12 @@ public class usuarioService {
 
     public void elegirPerfil(String correo, String cambioPerfil) {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
+        List<String> perfilesDisponibles = usuario.getPerfilesdisponibles();
 
         try{
-            if(cambioPerfil.equals("desarrollador") || cambioPerfil.equals("administrador") || cambioPerfil.equals("empleado") || cambioPerfil.equals("cliente") || cambioPerfil.equals("usuario")){
+            if(cambioPerfil.equals("Desarrollador") || cambioPerfil.equals("Administrador") || cambioPerfil.equals("Empleado") || cambioPerfil.equals("Cliente") || cambioPerfil.equals("Usuario")){
                 try {
-                    if (usuario.getPerfilesdisponibles().contains(cambioPerfil)) {
+                    if (perfilesDisponibles.contains(cambioPerfil)) {
                         usuario.setPerfilactual(cambioPerfil);
                         usuarioRepo.save(usuario);
                     }
@@ -73,21 +74,21 @@ public class usuarioService {
 
     public void cambiarPerfil(String correo, String cambioPerfil) {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
+        List<String> perfilesDisponibles = usuario.getPerfilesdisponibles();
 
         try{
-            if(cambioPerfil.equals("cliente") || cambioPerfil.equals("administrador") || cambioPerfil.equals("empleado")|| cambioPerfil.equals("desarrollador") || cambioPerfil.equals("usuario"))
-            {
+            if(cambioPerfil.equals("Desarrollador") || cambioPerfil.equals("Administrador") || cambioPerfil.equals("Empleado") || cambioPerfil.equals("Cliente") || cambioPerfil.equals("Usuario")){
                 try {
-                    if (usuario.getPerfilesdisponibles().contains(cambioPerfil)) {
+                    if (perfilesDisponibles.contains(cambioPerfil)) {
                         usuario.setPerfilactual(cambioPerfil);
                         usuarioRepo.save(usuario);
                     }
                 } catch (Exception e) {
-                    System.out.println("Perfil cambiarPerfil no encontrado dentro de los perfiles disponibles del usuario");
+                    System.out.println("Perfil elegirPerfil no encontrado dentro de los perfiles disponibles del usuario");
                 }
             }
         } catch (Exception e) {
-            System.out.println("perfil cambiarPerfil no encontrado en el sistema");
+            System.out.println("Perfil elegirPerfil no encontrado en el sistema");
         }
     }
 
@@ -125,28 +126,47 @@ public class usuarioService {
         return usuarioRepo.findByCorreo(correo);
     }
 
+    public List<String> getPerfilesDisponiblesById(long id) {
+
+        usuarioEntity usuario = usuarioRepo.findById(id).orElse(null);
+
+        return usuario.getPerfilesdisponibles();
+    }
+
     public List<usuarioEntity> getAllUsuarios() {
         return usuarioRepo.findAll();
     }
 
 
-    public usuarioEntity updateUsuario(String correo, String perfilNuevo) {
+    /*public void elegirPerfil(String correo, String cambioPerfil) {
         usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
-        usuario.setPerfilactual(perfilNuevo);
-        return usuarioRepo.save(usuario);
-    }
-
-    public void updateUsuario2(String correo, String perfilNuevo) {
-        usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
-        usuario.setPerfilactual(perfilNuevo);
+        usuario.setPerfilactual(cambioPerfil);
         usuarioRepo.save(usuario);
-    }
+
+    }*/
+
+    /*public void cambiarPerfil(String correo, String cambioPerfil) {
+        try {
+            usuarioEntity usuario = usuarioRepo.findByCorreo(correo);
+            usuario.setPerfilactual(cambioPerfil);
+            usuarioRepo.save(usuario);
+
+        } catch (Exception e) {
+            System.out.println("Usuario no encontrado con el correo");
+        }
+    }*/
 
 
 
     public void deleteUsuarioById(long idUsuario) {
         usuarioRepo.deleteById(idUsuario);
     }
+
+
+
+
+
+
 }
 
 
