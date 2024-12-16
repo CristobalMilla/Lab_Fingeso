@@ -51,7 +51,6 @@ public class vehiculoService {
     public vehiculoEntity updateVehiculo(long idVehiculoBase, vehiculoEntity vehiculoModificado){
         vehiculoEntity vehiculoBase = vehiculoRepo.findByIdIfExist(idVehiculoBase);
         if(vehiculoBase == null){
-            System.out.println("Vehiculo NO actualizado");
             return null;
         }
         else{
@@ -88,7 +87,6 @@ public class vehiculoService {
             if (vehiculoModificado.getSucursal() != null) {
                 vehiculoBase.setSucursal(vehiculoModificado.getSucursal());
             }
-            System.out.println("Vehiculo actualizado");
             return vehiculoRepo.save(vehiculoBase);
         }
     }

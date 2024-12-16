@@ -29,11 +29,9 @@ public class arriendoService {
     }
 
     private boolean esPeriodoValido(Date fechaInicio, Date fechaFin){
-        System.out.println("A");
         long diferenciaFechas = fechaFin.getTime() - fechaInicio.getTime(); // queda en milisegundos
         long treintaDiasMilisegundos = 2592000000L;
         if(diferenciaFechas > 0 && diferenciaFechas > treintaDiasMilisegundos){
-            System.out.println("Fechas invalidas");
             return false;
         }
         else{
@@ -42,15 +40,11 @@ public class arriendoService {
     }
 
     private boolean usuarioTieneArriendoActivo(long idUsuario){
-        System.out.println("B");
         for(arriendoEntity arriendoUsuario : arriendoRepo.findByidCliente(idUsuario)){
-            System.out.println("B1");
             if(arriendoUsuario != null){
-                System.out.println("B2");
                 if(arriendoUsuario.getEstado().equalsIgnoreCase("en uso")
                 || arriendoUsuario.getEstado().equalsIgnoreCase("retirar")
                 || arriendoUsuario.getEstado().equalsIgnoreCase("retraso")){
-                    System.out.println("Ya tiene arriendo");
                     return true;
                 }
             }
@@ -60,12 +54,9 @@ public class arriendoService {
     }
 
     private boolean comprobarFechasOtrosArriendos(arriendoEntity nuevoArriendo, long idVehiculo){
-        System.out.println("C " + nuevoArriendo.getFechainicio().getTime());
         for(arriendoEntity arriendoExistente : arriendoRepo.findByVehiculo(idVehiculo)) {
-            System.out.println("d " + arriendoExistente.getFechainicio().getTime());
             if (arriendoExistente.getFechainicio().getTime() > nuevoArriendo.getFechainicio().getTime()
                     || arriendoExistente.getFechainicio().getTime() < nuevoArriendo.getFechafin().getTime()) {
-                System.out.println("topa oe");
                 return true;
             }
         }
