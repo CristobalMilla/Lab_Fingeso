@@ -69,7 +69,7 @@
             "sucursal": this.sucursalId,
           }
           try {
-            const registro = await axios.post(import.meta.env.VITE_BASE_URL + "api/vehiculo/crearVehiculo");
+            const registro = await axios.post(import.meta.env.VITE_BASE_URL + "api/vehiculo/crearVehiculo", nuevo_vehiculo);
             console.log(registro)
             alert("Vehiculo agregado con exito")
           } catch (error) {
