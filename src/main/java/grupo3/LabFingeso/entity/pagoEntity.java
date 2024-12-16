@@ -34,6 +34,7 @@ public class pagoEntity {
     private arriendoEntity arriendo;
 
     @OneToOne
+    @JoinColumn(name = "comprobante_id")
     //@JsonManagedReference
     private comprobanteEntity comprobante;
 }
