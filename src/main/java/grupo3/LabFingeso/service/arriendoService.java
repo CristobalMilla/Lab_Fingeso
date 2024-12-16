@@ -8,7 +8,7 @@ import grupo3.LabFingeso.repository.vehiculoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,9 +29,11 @@ public class arriendoService {
     }
 
     private boolean esPeriodoValido(Date fechaInicio, Date fechaFin){
+        System.out.println("A");
         long diferenciaFechas = fechaFin.getTime() - fechaInicio.getTime(); // queda en milisegundos
         long treintaDiasMilisegundos = 2592000000L;
         if(diferenciaFechas > 0 && diferenciaFechas > treintaDiasMilisegundos){
+            System.out.println("Fechas invalidas");
             return false;
         }
         else{
@@ -40,41 +42,58 @@ public class arriendoService {
     }
 
     private boolean usuarioTieneArriendoActivo(long idUsuario){
+        System.out.println("B");
         for(arriendoEntity arriendoUsuario : arriendoRepo.findByidCliente(idUsuario)){
+            System.out.println("B1");
             if(arriendoUsuario != null){
+                System.out.println("B2");
                 if(arriendoUsuario.getEstado().equalsIgnoreCase("en uso")
                 || arriendoUsuario.getEstado().equalsIgnoreCase("retirar")
                 || arriendoUsuario.getEstado().equalsIgnoreCase("retraso")){
+                    System.out.println("Ya tiene arriendo");
                     return true;
                 }
             }
         }
+        System.out.println("B3");
         return false;
     }
 
-    private boolean comprobarFechasOtrosArriendos(arriendoEntity nuevoArriendo){
-        vehiculoEntity vehiculoArredado = vehiculoRepo.findByIdIfExist(nuevoArriendo.getVehiculo().getidVehiculo());
-        for(arriendoEntity arriendoExistente : arriendoRepo.findByVehiculo(vehiculoArredado.getidVehiculo())) {
-            if (arriendoExistente.getFechaInicio().getTime() > nuevoArriendo.getFechaInicio().getTime()
-                    || arriendoExistente.getFechaInicio().getTime() < nuevoArriendo.getFechaFin().getTime()) {
+    private boolean comprobarFechasOtrosArriendos(arriendoEntity nuevoArriendo, long idVehiculo){
+        System.out.println("C " + nuevoArriendo.getFechainicio().getTime());
+        for(arriendoEntity arriendoExistente : arriendoRepo.findByVehiculo(idVehiculo)) {
+            System.out.println("d " + arriendoExistente.getFechainicio().getTime());
+            if (arriendoExistente.getFechainicio().getTime() > nuevoArriendo.getFechainicio().getTime()
+                    || arriendoExistente.getFechainicio().getTime() < nuevoArriendo.getFechafin().getTime()) {
+                System.out.println("topa oe");
                 return true;
             }
         }
         return false;
     }
 
-    public arriendoEntity arrendar(arriendoEntity nuevoArriendo) {
+    public arriendoEntity arrendar(arriendoEntity nuevoArriendo, long idUsuario, long idVehiculo, long idComprobante) {
         try {
-            long idVehiculo = nuevoArriendo.getVehiculo().getidVehiculo();
-            if(arriendoRepo.findById(nuevoArriendo.getIdArriendo()).orElse(null) != null   // id duplicado
-            || vehiculoRepo.findByIdIfExist(idVehiculo) == null                                  // no "existe" el vehiculo en la bd
-            || !(vehiculoRepo.findByIdIfExist(idVehiculo).getEstado().equalsIgnoreCase("disponible")) // si no esta disponible
-            || usuarioTieneArriendoActivo(nuevoArriendo.getCliente().getIdUsuario())             // se pasa de los 30 dias
-            || comprobarFechasOtrosArriendos(nuevoArriendo)                                      // si es que el vehiculo no esta reservado entre las fechas
-            || !(esPeriodoValido(nuevoArriendo.getFechaInicio(), nuevoArriendo.getFechaFin()))){ // si el usuario tiene arriendo activo
+            if(vehiculoRepo.findById(idUsuario).orElse(null) == null){
+                return null;// no "existe" el usuario ingresado
+            }
+            if(vehiculoRepo.findByIdIfExist(idVehiculo) == null){
+                return null;// no "existe" el vehiculo en la bd
+            }
+            if(!(vehiculoRepo.findByIdIfExist(idVehiculo).getEstado().equalsIgnoreCase("disponible"))){
+                return null;// si no esta disponible
+            }
+            if(usuarioTieneArriendoActivo(idUsuario)){
+                return null;// se pasa de los 30 dias
+            }
+            if(comprobarFechasOtrosArriendos(nuevoArriendo, idVehiculo)){
+                return null;// si es que el vehiculo no esta reservado entre las fechas
+            }
+            if(!(esPeriodoValido(nuevoArriendo.getFechainicio(), nuevoArriendo.getFechafin()))){ // si el usuario tiene arriendo activo
                 return null;
             }
             else {
+                nuevoArriendo.setCliente(usuarioRepo.findById(idUsuario).orElse(null));
                 nuevoArriendo.setVehiculo(vehiculoRepo.findByIdIfExist(idVehiculo));
                 return arriendoRepo.save(nuevoArriendo);
             }

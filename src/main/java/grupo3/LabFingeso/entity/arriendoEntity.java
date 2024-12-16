@@ -1,8 +1,10 @@
 package grupo3.LabFingeso.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "arriendo")
@@ -11,7 +13,9 @@ public class arriendoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private long idarriendo;
+
     private Date fechainicio;
+
     private Date fechafin;
     private double costototal;
     private String estado;
@@ -33,7 +37,7 @@ public class arriendoEntity {
 
     // Constructor
     public arriendoEntity(long idarriendo, Date fechainicio, Date fechafin, double costototal, String estado, usuarioEntity cliente,
-                          vehiculoEntity vehiculo, sucursalEntity sucursalrecogida, comprobanteEntity comprobante){
+                          vehiculoEntity vehiculo, sucursalEntity sucursalrecogida, sucursalEntity sucursaldevolucion, comprobanteEntity comprobante) {
         this.idarriendo = idarriendo;
         this.fechainicio = fechainicio;
         this.fechafin = fechafin;
@@ -42,47 +46,49 @@ public class arriendoEntity {
         this.cliente = cliente;
         this.vehiculo = vehiculo;
         this.sucursalrecogida = sucursalrecogida;
+        this.sucursaldevolucion = sucursaldevolucion;
         this.comprobante = comprobante;
     }
 
-    public arriendoEntity(){
+    public arriendoEntity() {
 
     }
 
-    // Getters
-    public long getIdArriendo() {
+    // GETTERS
+
+    public long getIdarriendo() {
         return idarriendo;
     }
 
-    public Date getFechaInicio() {
+    public Date getFechainicio() {
         return fechainicio;
     }
 
-    public double getCostoTotal() {
-        return costototal;
+    public Date getFechafin() {
+        return fechafin;
     }
 
-    public Date getFechaFin() {
-        return fechafin;
+    public double getCostototal() {
+        return costototal;
     }
 
     public String getEstado() {
         return estado;
     }
 
-    public vehiculoEntity getVehiculo() {
-        return vehiculo;
-    }
-
     public usuarioEntity getCliente() {
         return cliente;
     }
 
-    public sucursalEntity getSucursalRecogida() {
+    public vehiculoEntity getVehiculo() {
+        return vehiculo;
+    }
+
+    public sucursalEntity getSucursalrecogida() {
         return sucursalrecogida;
     }
 
-    public sucursalEntity getSucursalDevolucion() {
+    public sucursalEntity getSucursaldevolucion() {
         return sucursaldevolucion;
     }
 
@@ -90,21 +96,22 @@ public class arriendoEntity {
         return comprobante;
     }
 
-    // Setters
+    // SETTERS
 
-    public void setIdArriendo(long idarriendo) {
+
+    public void setIdarriendo(long idarriendo) {
         this.idarriendo = idarriendo;
     }
 
-    public void setFechaInicio(Date fechainicio) {
+    public void setFechainicio(Date fechainicio) {
         this.fechainicio = fechainicio;
     }
 
-    public void setFechaFin(Date fechafin) {
+    public void setFechafin(Date fechafin) {
         this.fechafin = fechafin;
     }
 
-    public void setCostoTotal(double costototal) {
+    public void setCostototal(double costototal) {
         this.costototal = costototal;
     }
 
@@ -120,11 +127,11 @@ public class arriendoEntity {
         this.vehiculo = vehiculo;
     }
 
-    public void setSucursalRecogida(sucursalEntity sucursalrecogida) {
+    public void setSucursalrecogida(sucursalEntity sucursalrecogida) {
         this.sucursalrecogida = sucursalrecogida;
     }
 
-    public void setSucursalDevolucion(sucursalEntity sucursaldevolucion) {
+    public void setSucursaldevolucion(sucursalEntity sucursaldevolucion) {
         this.sucursaldevolucion = sucursaldevolucion;
     }
 

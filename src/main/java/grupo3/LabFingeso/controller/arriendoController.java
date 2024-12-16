@@ -15,8 +15,8 @@ public class arriendoController {
     private arriendoService serviceArriendo;
 
     @PostMapping("/arrendarVehiculo")
-    public arriendoEntity arrendar(@RequestBody arriendoEntity nuevoArriendo){
-        return serviceArriendo.arrendar(nuevoArriendo);
+    public arriendoEntity arrendar(@RequestBody arriendoEntity nuevoArriendo, @RequestParam long idusuario, @RequestParam long idvehiculo, @RequestParam long idcomprobante){
+        return serviceArriendo.arrendar(nuevoArriendo, idusuario, idvehiculo, idcomprobante);
     }
 
     @GetMapping("/obtenerPorCliente")

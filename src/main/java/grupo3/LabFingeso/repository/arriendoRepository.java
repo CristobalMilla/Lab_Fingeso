@@ -9,12 +9,11 @@ import java.util.List;
 
 @Repository
 public interface arriendoRepository extends JpaRepository<arriendoEntity, Long> {
-    @Query(value = "SELECT * FROM arriendo WHERE cliente = :idcliente AND existearriendo = true", nativeQuery = true)
+    @Query(value = "SELECT * FROM arriendo WHERE cliente = :idcliente", nativeQuery = true)
     List<arriendoEntity> findByidCliente(long idcliente);
 
-    @Query(value = "SELECT * FROM arriendo WHERE vehiculo = :idvehiculo AND existearriendo = true", nativeQuery = true)
+    @Query(value = "SELECT * FROM arriendo WHERE vehiculo = :idvehiculo", nativeQuery = true)
     List<arriendoEntity> findByVehiculo(long idvehiculo);
 
-    @Query(value = "UPDATE arriendo SET existearriendo = false WHERE idarriendo = :idarriendo AND existearriendo = true", nativeQuery = true)
     boolean deleteById(long idarriendo);
 }

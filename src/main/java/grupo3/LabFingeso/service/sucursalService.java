@@ -17,7 +17,7 @@ public class sucursalService {
     }
 
     public sucursalEntity createSucursal(sucursalEntity nuevaSucursal){
-        sucursalEntity existenteSucursal = sucursalRepo.findById(nuevaSucursal.getIdSucursal()).orElse(null);
+        sucursalEntity existenteSucursal = sucursalRepo.findById(nuevaSucursal.getIdsucursal()).orElse(null);
         if(existenteSucursal != null){
             return null;
         }
@@ -27,7 +27,7 @@ public class sucursalService {
     }
 
     public sucursalEntity getSucursalById(long idSucursal){
-        return sucursalRepo.findById(idSucursal).orElse(null);
+        return sucursalRepo.findByIdIfExist(idSucursal);
     }
 
     public List<sucursalEntity> getAllSucursales(){

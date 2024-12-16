@@ -1,6 +1,5 @@
 package grupo3.LabFingeso.controller;
 
-import grupo3.LabFingeso.entity.arriendoEntity;
 import grupo3.LabFingeso.entity.vehiculoEntity;
 import grupo3.LabFingeso.service.vehiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +34,9 @@ public class vehiculoController {
         return serviceVehiculo.getAllVehiculos();
     }
 
-    @PutMapping("/actualizarVehiculo")
-    public vehiculoEntity updateVehiculo(@RequestBody vehiculoEntity vehiculoModificado){
-        return serviceVehiculo.updateVehiculo(vehiculoModificado);
+    @PutMapping("/actualizarVehiculo/{idVehiculo}")
+    public vehiculoEntity updateVehiculo(@PathVariable long idVehiculo, @RequestBody vehiculoEntity vehiculoModificado){
+        return serviceVehiculo.updateVehiculo(idVehiculo, vehiculoModificado);
     }
 
     @DeleteMapping("/eliminarVehiculo")
