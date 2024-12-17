@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
   <div class="add-car">
     <h1>Agregar un Vehículo</h1>
@@ -6,7 +10,7 @@
         <input type="marca" v-model="vehicleBrand" placeholder="Ingrese la marca del vehiculo">
         <input type="modelo" v-model="vehicleModel" placeholder="Ingrese el modelo del vehiculo">
         <input type="tipo" v-model="vehicleType" placeholder="Ingrese el tipo de vehiculo">
-        <input type="matricula" v-model="vehiculeNumber" placeholder="Ingrese el numero de matricula  del vehiculo">
+        <input type="matricula" v-model="vehicleNumber" placeholder="Ingrese el numero de matricula  del vehiculo">
         <input type="kilometraje" v-model="vehicleMilleage" placeholder="Ingrese el kilometraje del vehiculo">
         <input type="estado" v-model="vehicleState" placeholder="Ingrese el estado del vehiculo">
         <input type="precioBase" v-model="vehicleBasePrice" placeholder="Ingrese el precio base del vehiculo">
@@ -26,11 +30,12 @@
 </template>
   
 <script>
-  function redireccionarAPaginaAdministrador(){
+    import axios from 'axios';
+    function redireccionarAPaginaAdministrador(){
     window.location.href = '/menuAdmin';
   }
   export default {
-    name: 'AddCar',
+    name: 'addCar',
     data(){
     return{
       brand: '',
@@ -44,7 +49,7 @@
       transmission: '',
       fuel: '',
       photo:'',
-      sucursalId: 0,
+      sucursalIds: 0,
     }
    },
     methods:{
@@ -53,7 +58,8 @@
       },
       async agregarVehiculo(){
         //Envio de datos a backend
-        if (this.vehicleBrand != "" & this.vehicleModel != "" & this.vehicleType != "" & this.vehiculeNumber != "" & this.vehicleMilleage != "" & this.vehicleState != "" & vehicleBasePrice != "" & vehicleCategory != "" & vehicleTransmission != "" & this.vehiculeFuel != "" & this.sucursalId != "") {
+        console.log("holapo");
+        if (true) {
           const nuevo_vehiculo = {
             "marca": this.vehicleBrand,
             "modelo": this.vehicleModel,
@@ -65,11 +71,11 @@
             "categoria": this.vehicleCategory,
             "transmision": this.vehicleTransmission,
             "combustible": this.vehiculeFuel,
-            "fotovehiculo": 0,
-            "sucursal": this.sucursalId,
+            "fotovehiculo": "",
+            "sucursal": {"idsucursal": this.sucursalId},
           }
           try {
-            const registro = await axios.post(import.meta.env.VITE_BASE_URL + "api/vehiculo/crearVehiculo/", nuevo_vehiculo);
+            const registro = await axios.post(import.meta.env.VITE_BASE_URL + "api/vehiculo/crearVehiculo", nuevo_vehiculo);
             console.log(registro)
             alert("Vehiculo agregado con exito")
           } catch (error) {

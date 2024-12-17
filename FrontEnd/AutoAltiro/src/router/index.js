@@ -43,7 +43,7 @@ const router = createRouter({
         { path: '/', name: 'home', component: homeView },
         { path: '/admin', name: 'adminHome', component: AdminHome },
         { path: '/customer', name: 'customerHome', component: CustomerHome },
-        { path: '/add-car', name: 'addCar', component: AddCar },
+        { path: '/addCar', name: 'addCar', component: AddCar },
         { path: '/modifyCar', name: 'modifyCar', component: ModifyCar},
         { path: '/car-status', name: 'carStatusSearch', component: CarStatusSearch },
         { path: '/advanced-search', name: 'advancedSearch', component: AdvancedSearch },

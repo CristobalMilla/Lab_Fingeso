@@ -39,7 +39,7 @@
     //Redireccionamiento
     //Add car
     function redireccionarAPaginaAddCar(){
-        window.location.href = '/add-car';
+        window.location.href = '/addCar';
     }
     //Edit Car
     function redireccionarAPaginaModifyCar(){

@@ -7,7 +7,7 @@
     <h1>Modificar un vehiculo</h1>
     <form>
       <div class="InputContainer">
-        <input type="idVehiculo" v-model="vehicleId" placeholder="Ingrese el id del vehiculo">
+        <input type="idvehiculo" v-model="vehicleId" placeholder="Ingrese el id del vehiculo">
         <input type="marca" v-model="vehicleBrand" placeholder="Ingrese la marca del vehiculo">
         <input type="modelo" v-model="vehicleModel" placeholder="Ingrese el modelo del vehiculo">
         <input type="tipo" v-model="vehicleType" placeholder="Ingrese el tipo de vehiculo">
@@ -51,16 +51,16 @@
                 transmission: '',
                 fuel: '',
                 photo:'',
-                sucursalId: 0,
+                sucursalIds: 0,
             }
         },
         methods:{
             regresar(){
                 redireccionarAPaginaAdministrador();
             },
-            modificarVehiculo(){
+            async modificarVehiculo(){
                 //Envio de datos a backend
-                if (this.vehicleBrand != "" | this.vehicleModel != "" | this.vehicleType != "" | this.vehiculeNumber != "" | this.vehicleMilleage != "" | this.vehicleState != "" | vehicleBasePrice != "" | vehicleCategory != "" | vehicleTransmission != "" | this.vehiculeFuel != "" | this.sucursalId != "") {
+                if (this.vehicleBrand != "" || this.vehicleModel != "" || this.vehicleType != "" || this.vehiculeNumber != "" || this.vehicleMilleage != "" || this.vehicleState != "" || vehicleBasePrice != "" || vehicleCategory != "" || vehicleTransmission != "" || this.vehiculeFuel != "" || this.sucursalId != "") {
                     const nuevo_vehiculo = {
                         "idvehiculo": this.vehicleId,
                         "marca": this.vehicleBrand,
@@ -73,9 +73,11 @@
                         "categoria": this.vehicleCategory,
                         "transmision": this.vehicleTransmission,
                         "combustible": this.vehicleFuel,
-                        "fotovehiculo": 0,
-                        "sucursal": this.sucursalId,
+                        "fotovehiculo": "",
+                        "sucursal": {"idsucursal": this.sucursalId},
                     }
+                    console.log('idvehiculo:', this.idVehiculo, typeof this.idVehiculo);
+                    console.log('sucursalId:', this.sucursalId, typeof this.sucursalId);
                     try {
                         const respuesta = await axios.put(import.meta.env.VITE_BASE_URL + "api/vehiculo/actualizarVehiculo/" + this.vehicleId, nuevo_vehiculo);
                         if(respuesta.data == 1){

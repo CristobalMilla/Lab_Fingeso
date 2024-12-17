@@ -77,7 +77,7 @@ export default{
     methods:{
         async login(){
             //DEBUGGEO
-            redireccionarASubpaginaSeleccionTipoUsuario();
+            //redireccionarASubpaginaSeleccionTipoUsuario();
             //DEBUGGEO
 
             //Envio de datos a backend
