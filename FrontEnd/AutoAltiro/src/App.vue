@@ -1,0 +1,28 @@
+<script setup>
+
+  import  { RouterView } from 'vue-router'
+  import Footer from "./components/Footer.vue"
+</script>
+
+
+<template>
+
+ <RouterView/>
+
+</template>
+
+
+<style>
+html,
+body{
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  
+}
+#app {
+  height: inherit;
+  width: inherit;
+}
+
+</style>
