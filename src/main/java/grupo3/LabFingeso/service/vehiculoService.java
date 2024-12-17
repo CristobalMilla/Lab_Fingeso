@@ -67,8 +67,12 @@ public class vehiculoService {
             if (vehiculoModificado.getKilometraje() >= 0) {
                 vehiculoBase.setKilometraje(vehiculoModificado.getKilometraje());
             }
-            if (vehiculoModificado.getEstado() != null) {
-                vehiculoBase.setEstado(vehiculoModificado.getEstado());
+            if (vehiculoModificado.getEstado() != null){
+                if(vehiculoModificado.getEstado().equalsIgnoreCase("disponible")
+                || vehiculoModificado.getEstado().equalsIgnoreCase("ocupado")
+                || vehiculoModificado.getEstado().equalsIgnoreCase("mantenimiento")){
+                    vehiculoBase.setEstado(vehiculoModificado.getEstado());
+                }
             }
             if (vehiculoModificado.getPreciobase() > 0) {
                 vehiculoBase.setPreciobase(vehiculoModificado.getPreciobase());
