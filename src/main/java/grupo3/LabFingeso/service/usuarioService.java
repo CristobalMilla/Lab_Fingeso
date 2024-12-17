@@ -35,6 +35,7 @@ public class usuarioService {
         usuarioEntity usuarioActual;
         try {
             usuarioActual = usuarioRepo.findByCorreo(correo);
+            usuarioActual.setPerfilactual(null);
         } catch (Exception e) {
             System.out.println("Usuario no encontrado con el correo");
             return 0;
