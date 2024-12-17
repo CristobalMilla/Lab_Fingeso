@@ -10,114 +10,117 @@ import java.util.List;
 public class usuarioEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idUsuario;
+    private long idusuario;
     private int rut;
     private String nombre;
     private int edad;
+    @Column(nullable = false, unique = true)
     private String correo;
     private String carnet;
-    private String licenciaConducir;
+    private String licenciaconducir;
     private String contrasena;
-    private String perfilActual;
+    private String perfilactual;
+
     @ElementCollection
-    private ArrayList<String> perfilesDisponibles;
+    @CollectionTable(name = "perfilesdisponibles", joinColumns = @JoinColumn(name = "idusuario"))
+    @Column(name = "perfil")
+    private List<String> perfilesdisponibles;
 
-    public usuarioEntity(int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
 
-    }
-
-    public usuarioEntity(long idUsuario, int rut, String nombre, int edad, String correo, String carnet, String licenciaConducir, String contrasena) {
-        this.idUsuario = idUsuario;
+    public usuarioEntity(int rut, String nombre, int edad, String correo, String carnet, String licenciaconducir, String contrasena) {
         this.rut = rut;
         this.nombre = nombre;
         this.edad = edad;
         this.correo = correo;
         this.carnet = carnet;
-        this.licenciaConducir = licenciaConducir;
+        this.licenciaconducir = licenciaconducir;
         this.contrasena = contrasena;
-        this.perfilActual = null;
-        this.perfilesDisponibles = new ArrayList<>(List.of("usuario"));
+        this.perfilactual = null;
+        this.perfilesdisponibles = new ArrayList<>();
+        this.perfilesdisponibles.add("usuario");
     }
 
-
-    public long getIdUsuario() {
-        return idUsuario;
+    public usuarioEntity() {
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public long getIdusuario() {
+        return idusuario;
     }
 
     public int getRut() {
         return rut;
     }
 
-    public void setRut(int rut) {
-        this.rut = rut;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
     public String getCorreo() {
         return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
     }
 
     public String getCarnet() {
         return carnet;
     }
 
-    public void setCarnet(String carnet) {
-        this.carnet = carnet;
+    public String getLicenciaconducir() {
+        return licenciaconducir;
     }
 
-    public String getLicenciaConducir() {
-        return licenciaConducir;
-    }
-
-    public void setLicenciaConducir(String licenciaConducir) {
-        this.licenciaConducir = licenciaConducir;
+    public String getPerfilactual() {
+        return perfilactual;
     }
 
     public String getContrasena() {
         return contrasena;
     }
 
+    public List<String> getPerfilesdisponibles() {
+        return perfilesdisponibles;
+    }
+
+    public void setIdusuario(long idusuario) {
+        this.idusuario = idusuario;
+    }
+
+    public void setRut(int rut) {
+        this.rut = rut;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public void setCarnet(String carnet) {
+        this.carnet = carnet;
+    }
+
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
 
-    public String getPerfilActual() {
-        return perfilActual;
+    public void setLicenciaconducir(String licenciaconducir) {
+        this.licenciaconducir = licenciaconducir;
     }
 
-    public void setPerfilActual(String perfilActual) {
-        this.perfilActual = perfilActual;
+    public void setPerfilactual(String perfilactual) {
+        this.perfilactual = perfilactual;
     }
 
-    public ArrayList<String> getPerfilesDisponibles() {
-        return perfilesDisponibles;
-    }
-
-    public void setPerfilesDisponibles(ArrayList<String> perfilesDisponibles) {
-        this.perfilesDisponibles = perfilesDisponibles;
+    public void setPerfilesdisponibles(List<String> perfilesdisponibles) {
+        this.perfilesdisponibles = perfilesdisponibles;
     }
 }
 

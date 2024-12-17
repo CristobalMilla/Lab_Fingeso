@@ -2,48 +2,46 @@ package grupo3.LabFingeso.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "sucursal")
 public class sucursalEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private long idSucursal;
+    private long idsucursal;
     private String nombre;
     private String direccion;
-    private List<vehiculoEntity> vehiculos;
 
     // Constructor
-    public sucursalEntity(String nombre, long idSucursal, String direccion, List<vehiculoEntity> vehiculos) {
+    public sucursalEntity(long idsucursal, String nombre, String direccion) {
+        this.idsucursal = idsucursal;
         this.nombre = nombre;
-        this.idSucursal = idSucursal;
         this.direccion = direccion;
-        this.vehiculos = vehiculos;
+    }
+
+    public sucursalEntity(){
+
     }
 
     // Getters
-    public List<vehiculoEntity> getVehiculos() {
-        return vehiculos;
-    }
 
-    public String getDireccion() {
-        return direccion;
+    public long getIdsucursal() {
+        return idsucursal;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public long getIdSucursal() {
-        return idSucursal;
+    public String getDireccion() {
+        return direccion;
     }
+
 
     // Setters
 
-    public void setIdSucursal(long idSucursal) {
-        this.idSucursal = idSucursal;
+
+    public void setIdsucursal(long idsucursal) {
+        this.idsucursal = idsucursal;
     }
 
     public void setNombre(String nombre) {
@@ -52,9 +50,5 @@ public class sucursalEntity {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public void setVehiculos(List<vehiculoEntity> vehiculos) {
-        this.vehiculos = vehiculos;
     }
 }
