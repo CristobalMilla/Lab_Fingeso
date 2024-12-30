@@ -58,7 +58,7 @@ public class usuarioService {
         List<String> perfilesDisponibles = usuario.getPerfilesdisponibles();
 
         try{
-            if(cambioPerfil.equals("Desarrollador") || cambioPerfil.equals("Administrador") || cambioPerfil.equals("Empleado") || cambioPerfil.equals("Cliente") || cambioPerfil.equals("Usuario")){
+            if(cambioPerfil.equalsIgnoreCase("Desarrollador") || cambioPerfil.equalsIgnoreCase("Administrador") || cambioPerfil.equalsIgnoreCase("Empleado") || cambioPerfil.equalsIgnoreCase("Cliente") || cambioPerfil.equalsIgnoreCase("Usuario")){
                 try {
                     if (perfilesDisponibles.contains(cambioPerfil)) {
                         usuario.setPerfilactual(cambioPerfil);
@@ -78,7 +78,7 @@ public class usuarioService {
         List<String> perfilesDisponibles = usuario.getPerfilesdisponibles();
 
         try{
-            if(cambioPerfil.equals("Desarrollador") || cambioPerfil.equals("Administrador") || cambioPerfil.equals("Empleado") || cambioPerfil.equals("Cliente") || cambioPerfil.equals("Usuario")){
+            if(cambioPerfil.equalsIgnoreCase("Desarrollador") || cambioPerfil.equalsIgnoreCase("Administrador") || cambioPerfil.equalsIgnoreCase("Empleado") || cambioPerfil.equalsIgnoreCase("Cliente") || cambioPerfil.equalsIgnoreCase("Usuario")){
                 try {
                     if (perfilesDisponibles.contains(cambioPerfil)) {
                         usuario.setPerfilactual(cambioPerfil);
@@ -98,9 +98,9 @@ public class usuarioService {
         usuarioEntity usuarioActual = usuarioRepo.findByCorreo(correoHabilitador);
 
         try{
-            if(agregarPerfil.equals("Cliente") || agregarPerfil.equals("Administrador") || agregarPerfil.equals("Empleado")|| agregarPerfil.equals("Desarrollador")){
+            if(agregarPerfil.equalsIgnoreCase("Cliente") || agregarPerfil.equalsIgnoreCase("Administrador") || agregarPerfil.equalsIgnoreCase("Empleado")|| agregarPerfil.equalsIgnoreCase("Desarrollador")){
                 try {
-                    if (usuarioActual.getPerfilactual().equals("Administrador") || usuarioActual.getPerfilactual().equals("Desarrollador")) {
+                    if (usuarioActual.getPerfilactual().equalsIgnoreCase("Administrador") || usuarioActual.getPerfilactual().equalsIgnoreCase("Desarrollador")) {
                         try {
                             if (!usuario.getPerfilesdisponibles().contains(agregarPerfil)) {
                                 usuario.getPerfilesdisponibles().add(agregarPerfil);
