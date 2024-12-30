@@ -28,8 +28,8 @@ public class tipoUsuarioService {
         return tipoUsuarioRepo.findAll();
     }
 
-    public tipoUsuarioEntity updateAnimal(tipoUsuarioEntity animal) {
-        return tipoUsuarioRepo.save(animal);
+    public tipoUsuarioEntity updateTipoUsuario(tipoUsuarioEntity tipoUsuarioEntity) {
+        return tipoUsuarioRepo.save(tipoUsuarioEntity);
     }
 
 
